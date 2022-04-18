@@ -3,6 +3,7 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
+  <el-button type="primary">Primary</el-button>
   <router-view />
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <div class="login-form-wrapper">
-      <h1 class="title">管理系统登录</h1>
+      <h1 class="title">系统登录</h1>
       <el-form
         ref="loginFormRef"
         :model="loginForm"
@@ -10,16 +10,28 @@
         status-icon
       >
         <el-form-item label="" prop="userName">
-          <el-input placeholder="用户名" v-model="loginForm.userName" />
+          <el-input placeholder="用户名" v-model="loginForm.userName">
+            <template #prepend>
+              <el-button icon="User" />
+            </template>
+          </el-input>
         </el-form-item>
         <el-form-item label="" prop="password">
-          <el-input placeholder="密码" v-model="loginForm.password" type="password" />
+          <el-input placeholder="密码" v-model="loginForm.password" type="password">
+            <template #prepend>
+              <el-button icon="Unlock" />
+            </template>
+          </el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" class="login-btn" @click="submitForm(loginFormRef)"
+          <el-button
+            type="primary"
+            class="login-btn"
+            @click="submitForm(loginFormRef)"
+            :icon="Search"
             >登录</el-button
           >
-          <el-button class="reset-btn" @click="resetForm(loginFormRef)">重置</el-button>
+          <!-- <el-button class="reset-btn" @click="resetForm(loginFormRef)">重置</el-button> -->
         </el-form-item>
       </el-form>
     </div>
@@ -90,7 +102,7 @@ const resetForm = (formEl: FormInstance | undefined) => {
     padding: 20px 50px;
 
     .login-form {
-      width: 200px;
+      width: 260px;
     }
 
     .title {

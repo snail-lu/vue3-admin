@@ -4,6 +4,7 @@ const Components = require("unplugin-vue-components/webpack");
 const { ElementPlusResolver } = require("unplugin-vue-components/resolvers");
 module.exports = defineConfig({
   transpileDependencies: true,
+  lintOnSave: false,
 
   // webpack配置
   configureWebpack: {
@@ -15,5 +16,5 @@ module.exports = defineConfig({
         resolvers: [ElementPlusResolver()],
       }),
     ],
-  }
+  },
 });

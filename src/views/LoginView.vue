@@ -1,23 +1,26 @@
 <template>
   <div class="login-container">
-    <el-form
-      ref="loginFormRef"
-      :model="loginForm"
-      :rules="rules"
-      label-width="60px"
-      class="login-form"
-    >
-      <el-form-item label="账号" prop="username">
-        <el-input v-model="loginForm.username" />
-      </el-form-item>
-      <el-form-item label="密码" prop="password">
-        <el-input v-model="loginForm.password" />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="submitForm(loginFormRef)">登录</el-button>
-        <el-button @click="resetForm(loginFormRef)">重置</el-button>
-      </el-form-item>
-    </el-form>
+    <div class="login-form-wrapper">
+      <div class="title">系统登录</div>
+      <el-form
+        ref="loginFormRef"
+        :model="loginForm"
+        :rules="rules"
+        label-width="60px"
+        class="login-form"
+      >
+        <el-form-item label="账号" prop="username">
+          <el-input v-model="loginForm.username" />
+        </el-form-item>
+        <el-form-item label="密码" prop="password">
+          <el-input v-model="loginForm.password" />
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submitForm(loginFormRef)">登录</el-button>
+          <el-button @click="resetForm(loginFormRef)">重置</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -64,10 +67,16 @@ const resetForm = (formEl: FormInstance | undefined) => {
   justify-content: center;
   align-items: center;
 
-  .login-form {
+  .login-form-wrapper {
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 5px;
-    padding: 60px 40px;
+    padding: 40px;
+
+    .title {
+      font-size: 30px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
   }
 }
 </style>

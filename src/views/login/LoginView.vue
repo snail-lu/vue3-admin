@@ -13,7 +13,7 @@
           <el-input placeholder="用户名" v-model="loginForm.userName" />
         </el-form-item>
         <el-form-item label="" prop="password">
-          <el-input placeholder="密码" v-model="loginForm.password" />
+          <el-input placeholder="密码" v-model="loginForm.password" type="password" />
         </el-form-item>
         <el-form-item>
           <el-button type="primary" class="login-btn" @click="submitForm(loginFormRef)"
@@ -61,10 +61,8 @@ const submitForm = async (formEl: FormInstance | undefined) => {
     if (valid) {
       login(loginForm).then((res) => {
         ElMessage.success("登录成功~");
-        router.push({ path: "/about" });
+        router.push({ path: "/" });
       });
-    } else {
-      ElMessage.error("登录失败，请检查用户名或密码！");
     }
   });
 };

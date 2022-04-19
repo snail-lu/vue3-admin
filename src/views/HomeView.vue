@@ -1,11 +1,8 @@
 <template>
-  <div class="home"></div>
+  <div class="home">首页</div>
 </template>
-
 <script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
+export default {
   name: "HomeView",
-});
+};
 </script>

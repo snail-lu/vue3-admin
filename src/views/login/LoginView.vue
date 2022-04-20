@@ -38,7 +38,6 @@ import { reactive, ref } from "vue";
 import { FormInstance, ElMessage } from "element-plus";
 import { LoginFormDto } from "../../types/login";
 import { useRouter } from "vue-router";
-import "element-plus/es/components/message/style/css";
 import { login } from "./api/index";
 
 // 路由示例

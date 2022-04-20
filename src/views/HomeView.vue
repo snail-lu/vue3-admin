@@ -6,3 +6,9 @@ export default {
   name: "HomeView",
 };
 </script>
+<style lang="scss" scoped>
+.home {
+  display: flex;
+  align-items: center;
+}
+</style>

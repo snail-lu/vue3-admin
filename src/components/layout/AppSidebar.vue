@@ -1,12 +1,11 @@
 <template>
   <el-menu
     active-text-color="#ffd04b"
-    background-color="#545c64"
-    class="el-menu-vertical-demo"
+    background-color="rgb(50, 65, 87)"
+    class="sidebar-container"
     default-active="2"
-    text-color="#fff"
-    @open="handleOpen"
-    @close="handleClose"
+    text-color="#eeeeee"
+    :collapse="isCollapse"
   >
     <el-sub-menu index="1">
       <template #title>
@@ -48,43 +47,16 @@
   </el-menu>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue-demi";
-export default defineComponent({
-  name: "AppSidebar",
-});
+<script lang="ts" setup>
+import { ref } from "vue";
+import { Menu as IconMenu } from "@element-plus/icons-vue";
+
+const isCollapse = ref(false);
 </script>
 
-<style scoped>
-.app-main {
-  height: calc(100vh - 120px);
-  width: 100%;
-  position: relative;
-  overflow-x: hidden;
-  background-color: #f0f0f0;
-  padding: 25px;
-  box-sizing: border-box;
-  overflow-y: auto;
+<style lang="scss" scoped>
+.sidebar-container {
+  width: 260px;
+  height: calc(100vh - 60px);
 }
-
-/* .root {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 30px;
-  min-height: calc(100vh - 170px);
-  box-sizing: border-box;
-}
-.fixed-header + .app-main {
-  padding-top: 50px;
-} */
-</style>
-
-<style lang="scss">
-// fix css style bug in open el-dialog
-// .el-popup-parent--hidden {
-// 	.fixed-header {
-// 		padding-right: 15px;
-// 	}
-// }
 </style>

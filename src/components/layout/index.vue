@@ -1,19 +1,20 @@
 <template>
   <div>
-    <!-- <AppHeader /> -->
+    <AppHeader />
     <div class="main">
-      <!-- <AppSidebar /> -->
+      <AppSidebar />
       <AppMain />
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import AppHeader from "./AppHeader.vue";
+<script lang="ts" setup>
 import AppMain from "./AppMain.vue";
 import AppSidebar from "./AppSidebar.vue";
-export default {
-  name: "Layout",
-};
+import AppHeader from "./AppHeader.vue";
 </script>
-<style scoped></style>
+<style lang="scss" scoped>
+.main {
+  display: flex;
+}
+</style>

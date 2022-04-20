@@ -24,11 +24,7 @@
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-button
-            type="primary"
-            class="login-btn"
-            @click="submitForm(loginFormRef)"
-            :icon="Search"
+          <el-button type="primary" class="login-btn" @click="submitForm(loginFormRef)"
             >登录</el-button
           >
           <!-- <el-button class="reset-btn" @click="resetForm(loginFormRef)">重置</el-button> -->

@@ -8,7 +8,12 @@
 
     <!-- 用户信息 -->
     <div class="box-r">
-      <el-icon @click="handleFullScreen" :size="30" color="#ffffff">
+      <el-icon
+        class="fullscreen-icon"
+        :size="30"
+        color="#ffffff"
+        @click="handleFullScreen"
+      >
         <full-screen
       /></el-icon>
       <el-dropdown @command="logout">
@@ -33,7 +38,7 @@
 
 <script lang="ts" setup>
 import { computed, ref, reactive } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 // 只使用组件的api需要手动引入组件，样式已在main.ts中引入
 import { ElMessageBox, ElIcon } from "element-plus";
 
@@ -47,6 +52,7 @@ const userInfo = reactive({
 });
 
 const isFullScreen = ref(false);
+
 // 全屏事件
 function handleFullScreen() {
   let element = document.documentElement;
@@ -75,19 +81,21 @@ function handleFullScreen() {
   isFullScreen.value = !isFullScreen.value;
 }
 
+const router = useRouter();
+// 登出
 function logout() {
-  // ElPopconfirm('确定退出登录吗?', '提示', { confirmButtonText: '确定', cancelButtonText: '取消', type: 'warning' })
-  //   .then(() => {
-  //     // 利用接口登出
-  //     // that.logoutLogin();
-  //     // 利用本地登出
-  //     // localStorage.clear()
-  //     // that.$router.go(0)
-  //   })
-  //   .catch(() => {
-  //     this.$message({ type: 'info', message: '已取消退出' })
-  //   })
-  ElMessageBox.confirm("测试");
+  ElMessageBox.confirm("确定退出登录吗", "提示", {
+    confirmButtonText: "确定",
+    cancelButtonText: "取消",
+    type: "warning",
+  }).then(
+    () => {
+      // 清空本地缓存，并重定向到登录页
+      localStorage.clear();
+      router.replace("/login");
+    },
+    () => {}
+  );
 }
 </script>
 
@@ -121,6 +129,11 @@ function logout() {
     display: flex;
     align-items: center;
     color: #fff;
+    padding-right: 20px;
+
+    .fullscreen-icon {
+      margin-right: 10px;
+    }
   }
 }
 </style>

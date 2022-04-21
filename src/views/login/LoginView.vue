@@ -45,8 +45,8 @@ const router = useRouter();
 // 表单ref及数据
 const loginFormRef = ref<FormInstance>();
 const loginForm = reactive<LoginFormDto>({
-  userName: "",
-  password: "",
+  userName: "admin",
+  password: "123456",
 });
 
 // 表单校验规则

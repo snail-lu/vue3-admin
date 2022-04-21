@@ -10,7 +10,7 @@
     <div class="box-r">
       <el-icon
         class="fullscreen-icon"
-        :size="30"
+        :size="24"
         color="#ffffff"
         @click="handleFullScreen"
       >

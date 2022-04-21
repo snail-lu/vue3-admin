@@ -7,7 +7,11 @@
     text-color="#eeeeee"
     :collapse="isCollapse"
   >
-    <el-sub-menu index="1">
+    <el-menu-item index="1">
+      <el-icon><house /></el-icon>
+      <span>首页</span>
+    </el-menu-item>
+    <el-sub-menu index="2">
       <template #title>
         <el-icon>
           <location />
@@ -26,12 +30,6 @@
         <el-menu-item index="1-4-1">item one</el-menu-item>
       </el-sub-menu>
     </el-sub-menu>
-    <el-menu-item index="2">
-      <el-icon>
-        <icon-menu />
-      </el-icon>
-      <span>Navigator Two</span>
-    </el-menu-item>
     <el-menu-item index="3" disabled>
       <el-icon>
         <document />
@@ -50,13 +48,20 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { Menu as IconMenu } from "@element-plus/icons-vue";
+import { useRouter } from "vue-router";
 
 const isCollapse = ref(false);
+const router = useRouter();
 </script>
 
 <style lang="scss" scoped>
 .sidebar-container {
   width: 260px;
   height: calc(100vh - 60px);
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 </style>

@@ -1,9 +1,12 @@
 <template>
   <div>
     <AppHeader />
-    <div class="main">
+    <div class="content">
       <AppSidebar />
-      <AppMain />
+      <div class="main">
+        <AppBreadcrumb />
+        <AppMain />
+      </div>
     </div>
   </div>
 </template>
@@ -12,9 +15,14 @@
 import AppMain from "./AppMain.vue";
 import AppSidebar from "./AppSidebar.vue";
 import AppHeader from "./AppHeader.vue";
+import AppBreadcrumb from "./AppBreadcrumb.vue";
 </script>
 <style lang="scss" scoped>
-.main {
+.content {
   display: flex;
+
+  .main {
+    flex: 1;
+  }
 }
 </style>

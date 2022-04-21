@@ -25,7 +25,7 @@ export default defineComponent({
 
 <style scoped>
 .app-main {
-  height: calc(100vh - 60px);
+  height: calc(100vh - 110px);
   width: 100%;
   position: relative;
   overflow-x: hidden;

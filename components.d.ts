@@ -9,6 +9,8 @@ declare module '@vue/runtime-core' {
     AppMain: typeof import('./src/components/layout/AppMain.vue')['default']
     AppSidebar: typeof import('./src/components/layout/AppSidebar.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
+    ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
+    ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
     ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']

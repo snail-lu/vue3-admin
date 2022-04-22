@@ -1,40 +1,54 @@
+import { h, resolveComponent } from "vue";
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import Layout from '../components/layout/index.vue';
-
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "home",
     component: Layout,
     redirect: '/home',
-    children: [{
-      path: "/home",
-      name: "home",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "../views/HomeView.vue"),
-      meta: {
-				title: '首页',
-				icon: 'el-icon-s-home'
-			}
-    }]
-  },
-  {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    children: [
+      {
+        path: "/home",
+        name: "home",
+        component: () => import("../views/HomeView.vue"),
+        meta: {
+          title: '首页',
+          icon: 'el-icon-s-home'
+        }
+      },
+      {
+        path: "/goods",
+        name: "goods",
+        component: {
+					render: () => h(resolveComponent('router-view'))
+				},
+        meta: {
+          title: '商品管理',
+          icon: 'el-icon-s-home'
+        },
+        children: [
+          {
+            path: '',
+            component: () => import('../views/goods/index.vue')
+          }
+        ]
+      }
+    ]
   },
   {
     path: "/login",
     name: "login",
-    component: () => import("../views/login/LoginView.vue"),
-  },
+    component: () => import("../views/login/LoginView.vue")
+},
+  {
+		path: '/404',
+		component: () => import('../views/NotFound.vue')
+	},
+  	// 404 page must be placed at the end !!!
+	{
+		path: '/:pathMatch(.*)*',
+		redirect: '/404',
+	}
 ];
 
 const router = createRouter({

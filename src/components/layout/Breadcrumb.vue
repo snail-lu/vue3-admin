@@ -1,12 +1,13 @@
 <template>
   <div class="breadcrumb-container">
-    <el-icon :size="24"><expand /></el-icon>
+    <el-icon :size="24">
+      <expand />
+    </el-icon>
     <!-- <el-icon><fold /></el-icon> -->
     <el-breadcrumb separator="/">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>promotion management</el-breadcrumb-item>
-      <el-breadcrumb-item>promotion list</el-breadcrumb-item>
-      <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
+      <el-breadcrumb-item v-for="item in list" :key="item.path">{{
+        item.meta.title
+      }}</el-breadcrumb-item>
     </el-breadcrumb>
   </div>
 </template>
@@ -14,7 +15,8 @@
 import { useRoute } from "vue-router";
 
 const route = useRoute();
-console.log(route, "route");
+// 筛选出配置了title的路由
+const list = route.matched.filter((item) => item.meta && item.meta.title);
 </script>
 <style lang="scss" scoped>
 .breadcrumb-container {

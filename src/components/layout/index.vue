@@ -2,9 +2,9 @@
   <div>
     <AppHeader />
     <div class="content">
-      <AppSidebar />
+      <Sidebar />
       <div class="main">
-        <AppBreadcrumb />
+        <Breadcrumb />
         <AppMain />
       </div>
     </div>
@@ -13,9 +13,9 @@
 
 <script lang="ts" setup>
 import AppMain from "./AppMain.vue";
-import AppSidebar from "./AppSidebar.vue";
+import Sidebar from "./Sidebar.vue";
 import AppHeader from "./AppHeader.vue";
-import AppBreadcrumb from "./AppBreadcrumb.vue";
+import Breadcrumb from "./Breadcrumb.vue";
 </script>
 <style lang="scss" scoped>
 .content {

@@ -5,9 +5,10 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Breadcrumb: typeof import('./src/components/layout/Breadcrumb.vue')['default']
     AppHeader: typeof import('./src/components/layout/AppHeader.vue')['default']
     AppMain: typeof import('./src/components/layout/AppMain.vue')['default']
-    AppSidebar: typeof import('./src/components/layout/AppSidebar.vue')['default']
+    Sidebar: typeof import('./src/components/layout/Sidebar.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']

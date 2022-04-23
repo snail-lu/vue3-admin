@@ -13,10 +13,14 @@
 </template>
 <script setup lang="ts">
 import { useRoute } from "vue-router";
+import { computed } from "vue";
 
 const route = useRoute();
 // 筛选出配置了title的路由
-const list = route.matched.filter((item) => item.meta && item.meta.title);
+const list = computed(() => {
+  console.log(route, "route");
+  return route.matched.filter((item) => item.meta && item.meta.title);
+});
 </script>
 <style lang="scss" scoped>
 .breadcrumb-container {

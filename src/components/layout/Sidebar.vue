@@ -24,7 +24,7 @@
                   <el-icon>
                     <caret-right />
                   </el-icon>
-                  <span>{{ item.meta?.title }}</span>
+                  <span>{{ subItem.meta?.title }}</span>
                 </template>
                 <!-- 三级菜单 -->
                 <el-menu-item

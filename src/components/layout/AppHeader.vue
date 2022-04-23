@@ -14,8 +14,8 @@
         color="#ffffff"
         @click="handleFullScreen"
       >
-        <full-screen
-      /></el-icon>
+        <full-screen />
+      </el-icon>
       <el-dropdown @command="logout">
         <span class="el-dropdown-link" style="display: flex; align-items: center">
           <el-avatar
@@ -23,7 +23,10 @@
             style="margin-right: 10px"
           ></el-avatar>
           <span>
-            {{ userInfo.userName || "" }}<el-icon><arrow-down /></el-icon>
+            {{ userInfo.userName || ""
+            }}<el-icon>
+              <arrow-down />
+            </el-icon>
           </span>
         </span>
         <template #dropdown>
@@ -59,23 +62,10 @@ function handleFullScreen() {
   if (isFullScreen.value) {
     if (document.exitFullscreen) {
       document.exitFullscreen();
-    } else if (document.webkitCancelFullScreen) {
-      document.webkitCancelFullScreen();
-    } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
     }
   } else {
     if (element.requestFullscreen) {
       element.requestFullscreen();
-    } else if (element.webkitRequestFullScreen) {
-      element.webkitRequestFullScreen();
-    } else if (element.mozRequestFullScreen) {
-      element.mozRequestFullScreen();
-    } else if (element.msRequestFullscreen) {
-      // IE11
-      element.msRequestFullscreen();
     }
   }
   isFullScreen.value = !isFullScreen.value;
@@ -112,6 +102,7 @@ function logout() {
     display: flex;
     align-items: center;
     padding-left: 20px;
+
     .logo {
       width: 40px;
       height: 40px;

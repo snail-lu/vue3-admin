@@ -43,7 +43,7 @@
 import { computed, ref, reactive } from "vue";
 import { useRoute, useRouter } from "vue-router";
 // 只使用组件的api需要手动引入组件，样式已在main.ts中引入
-import { ElMessageBox, ElIcon } from "element-plus";
+import { ElMessageBox } from "element-plus";
 
 const route = useRoute();
 const key = computed(() => {

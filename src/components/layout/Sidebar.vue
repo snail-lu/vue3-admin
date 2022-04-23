@@ -63,14 +63,16 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from "vue";
+import { computed } from "vue";
 import { useRouter } from "vue-router";
 import { Menu as IconMenu } from "@element-plus/icons-vue";
+import { useStore } from "vuex";
 
-const isCollapse = ref(false);
+// 侧边导航折叠/展开控制
+const store = useStore();
+const isCollapse = computed(() => store.state.isCollapse);
 const router = useRouter();
 
-console.log(router, "router");
 const menuList = computed(() => {
   return router.options.routes[0].children;
 });
@@ -78,9 +80,13 @@ const menuList = computed(() => {
 
 <style lang="scss" scoped>
 .sidebar-container {
-  width: 260px;
   height: calc(100vh - 60px);
   overflow-y: scroll;
+
+  &:not(.el-menu--collapse) {
+    width: 260px;
+    min-height: 400px;
+  }
 }
 
 ::-webkit-scrollbar {

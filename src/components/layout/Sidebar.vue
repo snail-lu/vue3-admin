@@ -40,11 +40,11 @@
               </el-sub-menu>
             </template>
             <template v-else>
-              <el-menu-item :index="item.path">
+              <el-menu-item :index="subItem.path">
                 <el-icon>
                   <caret-right />
                 </el-icon>
-                <span>{{ item.meta?.title }}</span>
+                <span>{{ subItem.meta?.title }}</span>
               </el-menu-item>
             </template>
           </template>

@@ -19,7 +19,7 @@
       <el-dropdown @command="logout">
         <span class="el-dropdown-link" style="display: flex; align-items: center">
           <el-avatar
-            src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+            src="https://avatars.githubusercontent.com/u/47588694?v=4"
             style="margin-right: 10px"
           ></el-avatar>
           <span>

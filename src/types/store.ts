@@ -1,3 +1,3 @@
 export interface StateDto {
-  isCollapse: Boolean
+    isCollapse: Boolean;
 }

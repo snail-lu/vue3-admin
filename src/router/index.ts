@@ -29,7 +29,10 @@ const routes: Array<RouteRecordRaw> = [
         children: [
           {
             path: '',
-            component: () => import('../views/goods/index.vue')
+            component: () => import('../views/goods/index.vue'),
+            meta: {
+              title: '商品列表'
+            }
           }
         ]
       }

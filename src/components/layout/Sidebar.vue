@@ -3,38 +3,77 @@
     active-text-color="#ffd04b"
     background-color="rgb(50, 65, 87)"
     class="sidebar-container"
-    default-active="2"
     text-color="#eeeeee"
     :collapse="isCollapse"
+    :router="true"
   >
-    <el-menu-item index="1">
-      <el-icon>
-        <house />
-      </el-icon>
-      <span>首页</span>
-    </el-menu-item>
-    <el-sub-menu index="2">
-      <template #title>
-        <el-icon>
-          <location />
-        </el-icon>
-        <span>Navigator One</span>
+    <template v-for="item in menuList" :key="item.path">
+      <template v-if="item.children">
+        <el-sub-menu>
+          <template #title>
+            <el-icon>
+              <icon-menu />
+            </el-icon>
+            <span>{{ item.meta?.title }}</span>
+          </template>
+          <!-- 二级菜单 -->
+          <template v-for="subItem in item.children" :key="subItem.path">
+            <template v-if="subItem.children">
+              <el-sub-menu>
+                <template #title>
+                  <el-icon>
+                    <caret-right />
+                  </el-icon>
+                  <span>{{ item.meta?.title }}</span>
+                </template>
+                <!-- 三级菜单 -->
+                <el-menu-item
+                  v-for="threeItem in subItem.children"
+                  :key="threeItem.path"
+                  :index="threeItem.path"
+                >
+                  <el-icon>
+                    <caret-right />
+                  </el-icon>
+                  <span>{{ threeItem.meta?.title }}</span>
+                </el-menu-item>
+              </el-sub-menu>
+            </template>
+            <template v-else>
+              <el-menu-item :index="item.path">
+                <el-icon>
+                  <caret-right />
+                </el-icon>
+                <span>{{ item.meta?.title }}</span>
+              </el-menu-item>
+            </template>
+          </template>
+        </el-sub-menu>
       </template>
-      <el-menu-item index="1-1">item one</el-menu-item>
-      <el-menu-item index="1-2">item one</el-menu-item>
-    </el-sub-menu>
+      <template v-else>
+        <el-menu-item :index="item.path">
+          <el-icon>
+            <icon-menu />
+          </el-icon>
+          <span>{{ item.meta?.title }}</span>
+        </el-menu-item>
+      </template>
+    </template>
   </el-menu>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
+import { Menu as IconMenu } from "@element-plus/icons-vue";
 
 const isCollapse = ref(false);
 const router = useRouter();
 
 console.log(router, "router");
-// const menuList = router.options.routes.filter(item => !item.hidden)
+const menuList = computed(() => {
+  return router.options.routes[0].children;
+});
 </script>
 
 <style lang="scss" scoped>

@@ -3,16 +3,16 @@ import { ElMessage } from 'element-plus';
 import 'element-plus/es/components/message/style/css';
 
 // 创建HTTP实例
-const http = axios.create({
+const request = axios.create({
     baseURL: 'https://www.fastmock.site/mock/810bb3cba8677f9f01afe7855db87edb/vue3-ts-admin/api',
     timeout: 2000,
     headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-    },
+        'Content-Type': 'application/json;charset=utf-8'
+    }
 });
 
 // 请求拦截
-http.interceptors.request.use((config) => {
+request.interceptors.request.use((config) => {
     config.headers = config.headers || {};
     const token = localStorage.getItem('token');
     if (token) {
@@ -22,7 +22,7 @@ http.interceptors.request.use((config) => {
 });
 
 // 响应拦截
-http.interceptors.response.use(
+request.interceptors.response.use(
     (res) => {
         const code: number = res.data.code;
         if (code !== 200) {
@@ -36,4 +36,4 @@ http.interceptors.response.use(
     }
 );
 
-export default http;
+export default request;

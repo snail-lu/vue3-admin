@@ -13,50 +13,56 @@ const routes: Array<RouteRecordRaw> = [
                 component: () => import('../views/HomeView.vue'),
                 meta: {
                     title: '首页',
-                    icon: 'el-icon-s-home',
-                },
+                    icon: 'el-icon-s-home'
+                }
             },
             {
                 path: '/goods',
                 name: 'goods',
                 component: {
-                    render: () => h(resolveComponent('router-view')),
+                    render: () => h(resolveComponent('router-view'))
                 },
                 meta: {
-                    title: '商品管理',
-                    icon: 'el-icon-s-home',
+                    title: '商品管理'
                 },
                 children: [
                     {
-                        path: '',
+                        path: 'list',
                         component: () => import('../views/goods/index.vue'),
                         meta: {
-                            title: '商品列表',
-                        },
+                            title: '商品列表'
+                        }
                     },
-                ],
-            },
-        ],
+                    {
+                        path: 'edit',
+                        component: () => import('../views/goods/index.vue'),
+                        meta: {
+                            title: '商品列表'
+                        }
+                    }
+                ]
+            }
+        ]
     },
     {
         path: '/login',
         name: 'login',
-        component: () => import('../views/login/LoginView.vue'),
+        component: () => import('../views/login/LoginView.vue')
     },
     {
         path: '/404',
-        component: () => import('../views/NotFound.vue'),
-    },
+        component: () => import('../views/NotFound.vue')
+    }
     // 404 page must be placed at the end !!!
-    {
-        path: '/:pathMatch(.*)*',
-        redirect: '/404',
-    },
+    // {
+    //     path: '/:pathMatch(.*)*',
+    //     redirect: '/404'
+    // }
 ];
 
 const router = createRouter({
     history: createWebHashHistory(),
-    routes,
+    routes
 });
 
 export default router;

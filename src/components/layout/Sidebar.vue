@@ -17,7 +17,7 @@
             <span>{{ item.meta?.title }}</span>
           </template>
           <!-- 二级菜单 -->
-          <template v-for="subItem in item.children" :key="subItem.path">
+          <template v-for="subItem in item.children" :key="`${item.path}${subItem.path}`">
             <template v-if="subItem.children">
               <el-sub-menu>
                 <template #title>
@@ -29,8 +29,8 @@
                 <!-- 三级菜单 -->
                 <el-menu-item
                   v-for="threeItem in subItem.children"
-                  :key="threeItem.path"
-                  :index="threeItem.path"
+                  :key="`${item.path}${subItem.path}/${threeItem.path}`"
+                  :index="`${item.path}${subItem.path}/${threeItem.path}`"
                 >
                   <el-icon>
                     <caret-right />
@@ -40,7 +40,7 @@
               </el-sub-menu>
             </template>
             <template v-else>
-              <el-menu-item :index="subItem.path">
+              <el-menu-item :index="`${item.path}/${subItem.path}`">
                 <el-icon>
                   <caret-right />
                 </el-icon>

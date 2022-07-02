@@ -3,7 +3,7 @@
     <!-- 系统标题 -->
     <div class="box-l">
       <img class="logo" src="../../assets/logo.png" />
-      <span class="title">后台管理系统</span>
+      <span class="title">商城管理系统</span>
     </div>
 
     <!-- 用户信息 -->
@@ -20,7 +20,7 @@
         <span class="el-dropdown-link" style="display: flex; align-items: center">
           <el-avatar
             src="https://avatars.githubusercontent.com/u/47588694?v=4"
-            style="margin-right: 10px"
+            style="margin-right: 20px"
           ></el-avatar>
           <span>
             {{ userInfo.userName || ""
@@ -99,8 +99,8 @@ function logout() {
     padding-left: 20px;
 
     .logo {
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
       margin-right: 10px;
     }
 
@@ -118,7 +118,7 @@ function logout() {
     padding-right: 20px;
 
     .fullscreen-icon {
-      margin-right: 10px;
+      margin-right: 20px;
     }
   }
 }

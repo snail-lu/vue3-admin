@@ -6,6 +6,7 @@
     text-color="#fff"
     :collapse="collapse"
     :router="true"
+    :default-active="activePath"
   >
     <template v-for="item in menu" :key="`${item.path}`">
       <MenuItem :menu="item" base-path="" />
@@ -14,6 +15,8 @@
 </template>
 
 <script setup>
+import { useRoute } from "vue-router";
+import { computed } from "vue";
 import MenuItem from "./MenuItem";
 import { Menu as IconMenu } from "@element-plus/icons-vue";
 
@@ -22,9 +25,10 @@ const props = defineProps({
   collapse: Boolean,
 });
 
-// const handleOpen = (key: string, keyPath: string[]) => {
-//   console.log(key, keyPath, "handleOpen");
-// };
+const route = useRoute();
+const activePath = computed(() => {
+  return route.path;
+});
 </script>
 
 <style lang="scss" scoped></style>

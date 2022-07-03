@@ -1,5 +1,11 @@
 import { createStore } from 'vuex';
 import { StateDto } from './../types/store';
+import VuexPersistence from 'vuex-persist';
+
+// 创建vuex持久化实例
+const vuexLocal = new VuexPersistence({
+    storage: window.localStorage
+});
 
 // 创建 store 实例
 export const store = createStore({
@@ -18,5 +24,6 @@ export const store = createStore({
         changeLoginStatus(state: StateDto, { isLogined }) {
             state.isLogined = isLogined;
         }
-    }
+    },
+    plugins: [vuexLocal.plugin]
 });

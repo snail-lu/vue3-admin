@@ -40,8 +40,8 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref, reactive } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { ref, reactive } from "vue";
+import { useRouter } from "vue-router";
 // 只使用组件的api需要手动引入组件，样式已在main.ts中引入
 import { ElMessageBox } from "element-plus";
 
@@ -87,7 +87,8 @@ function logout() {
 <style lang="scss" scoped>
 .header-container {
   height: 60px;
-  background-color: #242f42;
+  // background-color: #242f42;
+  background-color: #409eff;
   color: #fff;
   display: flex;
   justify-content: space-between;

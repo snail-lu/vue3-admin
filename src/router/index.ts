@@ -7,9 +7,10 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         component: Layout,
+        redirect: '/home',
         children: [
             {
-                path: '',
+                path: 'home',
                 name: 'home',
                 component: () => import('../views/HomeView.vue'),
                 meta: {
@@ -18,7 +19,7 @@ const routes: Array<RouteRecordRaw> = [
                 }
             },
             {
-                path: '/goods',
+                path: 'goods',
                 name: 'goods',
                 component: {
                     render: () => h(resolveComponent('router-view'))
@@ -35,10 +36,10 @@ const routes: Array<RouteRecordRaw> = [
                         }
                     },
                     {
-                        path: 'edit',
-                        component: () => import('../views/goods/index.vue'),
+                        path: 'inventory',
+                        component: () => import('../views/goods/inventory.vue'),
                         meta: {
-                            title: '商品列表'
+                            title: '库存列表'
                         }
                     }
                 ]
@@ -53,12 +54,12 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/404',
         component: () => import('../views/NotFound.vue')
-    }
+    },
     // 404 page must be placed at the end !!!
-    // {
-    //     path: '/:pathMatch(.*)*',
-    //     redirect: '/404'
-    // }
+    {
+        path: '/:pathMatch(.*)*',
+        redirect: '/404'
+    }
 ];
 
 const router = createRouter({
@@ -68,6 +69,7 @@ const router = createRouter({
 
 // 导航守卫
 router.beforeEach((to, from, next) => {
+    console.log(to, 'to');
     // 根据登录状态决定路由方向
     const isLogined = store.state.isLogined;
     if (isLogined || to.path === '/login') {

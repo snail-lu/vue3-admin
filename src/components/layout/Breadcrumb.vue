@@ -1,9 +1,9 @@
 <template>
   <div class="breadcrumb-container">
-    <el-icon :size="24" v-if="isCollapse" @click="changeCollapse">
+    <el-icon :size="24" v-if="isCollapse" @click="changeCollapse" style="cursor: pointer">
       <expand />
     </el-icon>
-    <el-icon :size="24" v-else @click="changeCollapse">
+    <el-icon :size="24" v-else @click="changeCollapse" style="cursor: pointer">
       <fold />
     </el-icon>
     <el-breadcrumb separator="/">
@@ -19,9 +19,8 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 
 const route = useRoute();
-// 筛选出配置了title的路由
+// 获取当前路由栈
 const list = computed(() => {
-  console.log(route, "route");
   return route.matched.filter((item) => item.meta && item.meta.title);
 });
 

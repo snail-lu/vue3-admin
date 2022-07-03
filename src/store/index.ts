@@ -15,8 +15,8 @@ export const store = createStore({
             state.isCollapse = !state.isCollapse;
         },
         // 修改登录状态
-        changeLoginStatus(state: StateDto) {
-            state.isLogined = !state.isLogined;
+        changeLoginStatus(state: StateDto, { isLogined }) {
+            state.isLogined = isLogined;
         }
     }
 });

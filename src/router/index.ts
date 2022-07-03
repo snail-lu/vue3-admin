@@ -1,14 +1,15 @@
 import { h, resolveComponent } from 'vue';
 import { createRouter, RouteRecordRaw, createWebHistory } from 'vue-router';
+import { store } from '@/store/index';
+// import { useStore } from 'vuex';
 import Layout from '../components/layout/index.vue';
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         component: Layout,
-        redirect: '/home',
         children: [
             {
-                path: '/home',
+                path: '',
                 name: 'home',
                 component: () => import('../views/HomeView.vue'),
                 meta: {
@@ -63,6 +64,19 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
     history: createWebHistory(),
     routes
+});
+
+// 导航守卫
+router.beforeEach((to, from, next) => {
+    // 根据登录状态决定路由方向
+    const isLogined = store.state.isLogined;
+    if (isLogined || to.path === '/login') {
+        next();
+    } else {
+        // 未登录用户进入到登录页
+        next({ path: 'login' });
+        // next();
+    }
 });
 
 export default router;

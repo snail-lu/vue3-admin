@@ -35,9 +35,10 @@
 </template>
 <script setup lang="ts">
 import { reactive, ref } from "vue";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 import { FormInstance, ElMessage } from "element-plus";
 import { LoginFormDto } from "../../types/login";
-import { useRouter } from "vue-router";
 import { login } from "./api/index";
 
 // 路由示例
@@ -61,12 +62,17 @@ const rules = {
   ],
 };
 
+// 登录状态修改
+const store = useStore();
+const changeLoginStatus = () => store.commit("changeLoginStatus", { isLogined: true });
+
 // 表单提交
 const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   await formEl.validate((valid, fields) => {
     if (valid) {
       login(loginForm).then((res) => {
+        changeLoginStatus();
         ElMessage.success("登录成功~");
         router.push({ path: "/" });
       });

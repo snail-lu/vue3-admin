@@ -31,4 +31,8 @@ const activePath = computed(() => {
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+::v-deep .el-menu-item.is-active {
+  background-color: rgb(51, 126, 204);
+}
+</style>

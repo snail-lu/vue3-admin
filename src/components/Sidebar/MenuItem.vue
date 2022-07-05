@@ -1,6 +1,6 @@
 <template>
   <!-- 存在子菜单 -->
-  <el-sub-menu v-if="menu.children">
+  <el-sub-menu v-if="menu.children" :index="`${basePath}/${menu.path}`">
     <template #title>
       <el-icon>
         <icon-menu />

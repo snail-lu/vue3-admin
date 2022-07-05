@@ -15,11 +15,10 @@
   </el-menu>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { useRoute } from "vue-router";
-import { computed, ref } from "vue";
-import MenuItem from "./MenuItem";
-import { Menu as IconMenu } from "@element-plus/icons-vue";
+import { computed } from "vue";
+import MenuItem from "./MenuItem.vue";
 
 const props = defineProps({
   menu: Object,
@@ -30,10 +29,6 @@ const route = useRoute();
 const activePath = computed(() => {
   return route.path;
 });
-
-// const sidemenu = ref(null);
-// console.log(sidemenu.value, "sidemenu");
-// sidemenu.value.open("/goods");
 </script>
 
 <style lang="scss" scoped>

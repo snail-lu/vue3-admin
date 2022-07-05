@@ -21,7 +21,7 @@
   </el-menu-item>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { Menu as IconMenu } from "@element-plus/icons-vue";
 const props = defineProps({
   menu: Object,

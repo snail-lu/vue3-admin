@@ -1,5 +1,5 @@
 <template>
-  <div class="home">首页</div>
+  <div class="home">欢迎您，Admin</div>
 </template>
 <script lang="ts">
 export default {

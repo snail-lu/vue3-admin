@@ -15,8 +15,35 @@ const routes: Array<RouteRecordRaw> = [
                 component: () => import('../views/HomeView.vue'),
                 meta: {
                     title: '首页',
-                    icon: 'el-icon-s-home'
+                    icon: 'House'
                 }
+            },
+            {
+                path: 'page',
+                name: 'page',
+                component: {
+                    render: () => h(resolveComponent('router-view'))
+                },
+                meta: {
+                    title: '页面管理',
+                    icon: 'Document'
+                },
+                children: [
+                    {
+                        path: 'list',
+                        component: () => import('../views/goods/index.vue'),
+                        meta: {
+                            title: '页面列表'
+                        }
+                    },
+                    {
+                        path: 'category',
+                        component: () => import('../views/goods/index.vue'),
+                        meta: {
+                            title: '内容列表'
+                        }
+                    }
+                ]
             },
             {
                 path: 'goods',
@@ -25,7 +52,8 @@ const routes: Array<RouteRecordRaw> = [
                     render: () => h(resolveComponent('router-view'))
                 },
                 meta: {
-                    title: '商品管理'
+                    title: '商品管理',
+                    icon: 'Goods'
                 },
                 children: [
                     {
@@ -36,10 +64,166 @@ const routes: Array<RouteRecordRaw> = [
                         }
                     },
                     {
+                        path: 'category',
+                        component: () => import('../views/goods/index.vue'),
+                        meta: {
+                            title: '商品分类'
+                        }
+                    },
+                    {
                         path: 'inventory',
                         component: () => import('../views/goods/inventory.vue'),
                         meta: {
                             title: '库存列表'
+                        }
+                    }
+                ]
+            },
+            {
+                path: 'order',
+                name: 'order',
+                component: {
+                    render: () => h(resolveComponent('router-view'))
+                },
+                meta: {
+                    title: '订单管理',
+                    icon: 'SoldOut'
+                },
+                children: [
+                    {
+                        path: 'list',
+                        component: () => import('../views/goods/index.vue'),
+                        meta: {
+                            title: '订单列表'
+                        }
+                    },
+                    {
+                        path: 'refund',
+                        component: () => import('../views/goods/inventory.vue'),
+                        meta: {
+                            title: '退单列表'
+                        }
+                    }
+                ]
+            },
+            {
+                path: 'member',
+                name: 'member',
+                component: {
+                    render: () => h(resolveComponent('router-view'))
+                },
+                meta: {
+                    title: '会员管理',
+                    icon: 'User'
+                },
+                children: [
+                    {
+                        path: 'list',
+                        component: () => import('../views/goods/index.vue'),
+                        meta: {
+                            title: '会员列表'
+                        }
+                    },
+                    {
+                        path: 'address',
+                        component: () => import('../views/goods/index.vue'),
+                        meta: {
+                            title: '评论列表'
+                        }
+                    }
+                ]
+            },
+            {
+                path: 'activity',
+                name: 'activity',
+                component: {
+                    render: () => h(resolveComponent('router-view'))
+                },
+                meta: {
+                    title: '活动管理',
+                    icon: 'Calendar'
+                },
+                children: [
+                    {
+                        path: 'list',
+                        component: () => import('../views/goods/index.vue'),
+                        meta: {
+                            title: '活动列表'
+                        }
+                    },
+                    {
+                        path: 'calendar',
+                        component: () => import('../views/goods/index.vue'),
+                        meta: {
+                            title: '活动日历'
+                        }
+                    },
+                    {
+                        path: 'coupon',
+                        component: () => import('../views/goods/index.vue'),
+                        meta: {
+                            title: '优惠券'
+                        }
+                    }
+                ]
+            },
+            {
+                path: 'shop',
+                name: 'shop',
+                component: {
+                    render: () => h(resolveComponent('router-view'))
+                },
+                meta: {
+                    title: '门店管理',
+                    icon: 'shop'
+                },
+                children: [
+                    {
+                        path: 'list',
+                        component: () => import('../views/goods/index.vue'),
+                        meta: {
+                            title: '门店列表'
+                        }
+                    },
+                    {
+                        path: 'guide',
+                        component: () => import('../views/goods/index.vue'),
+                        meta: {
+                            title: '导购列表'
+                        }
+                    }
+                ]
+            },
+            {
+                path: 'setting',
+                name: 'setting',
+                component: {
+                    render: () => h(resolveComponent('router-view'))
+                },
+                meta: {
+                    title: '系统设置',
+                    icon: 'setting'
+                },
+                children: [
+                    {
+                        path: 'freight',
+                        component: () => import('../views/goods/index.vue'),
+                        meta: {
+                            title: '运费设置'
+                        }
+                    },
+                    {
+                        path: 'admin',
+                        component: () => import('../views/goods/index.vue'),
+                        meta: {
+                            title: '管理员管理'
+                        }
+                    },
+                    {
+                        path: 'dictionary',
+                        component: () => import('../views/goods/index.vue'),
+                        meta: {
+                            title: '数据字典'
                         }
                     }
                 ]

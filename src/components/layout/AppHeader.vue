@@ -13,21 +13,16 @@
         :size="24"
         color="#ffffff"
         @click="handleFullScreen"
+        title="全屏"
       >
         <full-screen />
       </el-icon>
-      <el-dropdown @command="logout">
-        <span class="el-dropdown-link flex-box flex-v-center">
-          <el-avatar
-            src="https://avatars.githubusercontent.com/u/47588694?v=4"
-            style="margin-right: 20px"
-          ></el-avatar>
-          <span class="flex-box flex-v-center">
-            {{ userInfo.userName || ""
-            }}<el-icon>
-              <arrow-down />
-            </el-icon>
-          </span>
+      <el-dropdown @command="logout" trigger="click">
+        <span class="user-name flex-box flex-v-center">
+          {{ userInfo.userName || ""
+          }}<el-icon>
+            <arrow-down />
+          </el-icon>
         </span>
         <template #dropdown>
           <el-dropdown-menu>
@@ -100,8 +95,8 @@ function logout() {
     padding-left: 20px;
 
     .logo {
-      width: 24px;
-      height: 24px;
+      width: 32px;
+      height: 32px;
       margin-right: 10px;
     }
 
@@ -120,10 +115,13 @@ function logout() {
 
     .fullscreen-icon {
       margin-right: 20px;
+      cursor: pointer;
     }
 
-    .el-dropdown-link {
+    .user-name {
       color: #fff;
+      cursor: pointer;
+      user-select: none;
     }
   }
 }

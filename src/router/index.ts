@@ -12,7 +12,7 @@ const routes: Array<RouteRecordRaw> = [
             {
                 path: 'home',
                 name: 'home',
-                component: () => import('../views/HomeView.vue'),
+                component: () => import('../views/Home.vue'),
                 meta: {
                     title: '首页',
                     icon: 'House'

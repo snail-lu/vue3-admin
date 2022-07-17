@@ -5,7 +5,7 @@
             <el-form ref="loginFormRef" :model="loginForm" :rules="rules" class="login-form" status-icon>
                 <el-form-item label="" prop="userName">
                     <el-input placeholder="用户名" v-model="loginForm.userName">
-                        <template #prepend> < icon="User" /> </template>
+                        <template #prepend> <el-button icon="User" /> </template>
                     </el-input>
                 </el-form-item>
                 <el-form-item label="" prop="password">

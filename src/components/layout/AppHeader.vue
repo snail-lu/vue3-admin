@@ -17,12 +17,12 @@
         <full-screen />
       </el-icon>
       <el-dropdown @command="logout">
-        <span class="el-dropdown-link" style="display: flex; align-items: center">
+        <span class="el-dropdown-link flex-box flex-v-center">
           <el-avatar
             src="https://avatars.githubusercontent.com/u/47588694?v=4"
             style="margin-right: 20px"
           ></el-avatar>
-          <span>
+          <span class="flex-box flex-v-center">
             {{ userInfo.userName || ""
             }}<el-icon>
               <arrow-down />
@@ -88,7 +88,7 @@ function logout() {
 .header-container {
   height: 60px;
   // background-color: #242f42;
-  background-color: #409eff;
+  background-color: #01182a;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -100,15 +100,15 @@ function logout() {
     padding-left: 20px;
 
     .logo {
-      width: 30px;
-      height: 30px;
+      width: 24px;
+      height: 24px;
       margin-right: 10px;
     }
 
     .title {
       height: 60px;
       line-height: 60px;
-      font-size: 24px;
+      font-size: 20px;
     }
   }
 
@@ -120,6 +120,10 @@ function logout() {
 
     .fullscreen-icon {
       margin-right: 20px;
+    }
+
+    .el-dropdown-link {
+      color: #fff;
     }
   }
 }

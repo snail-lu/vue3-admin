@@ -1,9 +1,9 @@
 <template>
   <div class="breadcrumb-container">
-    <el-icon :size="24" v-if="isCollapse" @click="changeCollapse" style="cursor: pointer">
+    <el-icon :size="20" v-if="isCollapse" @click="changeCollapse" style="cursor: pointer">
       <expand />
     </el-icon>
-    <el-icon :size="24" v-else @click="changeCollapse" style="cursor: pointer">
+    <el-icon :size="20" v-else @click="changeCollapse" style="cursor: pointer">
       <fold />
     </el-icon>
     <el-breadcrumb separator="/">

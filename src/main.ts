@@ -5,6 +5,7 @@ import { store } from './store/index';
 import * as ElIcons from '@element-plus/icons-vue';
 import 'element-plus/es/components/message/style/css';
 import 'element-plus/es/components/message-box/style/css';
+import '@/styles/index.scss'; // global css
 
 const app = createApp(App);
 for (const name in ElIcons) {

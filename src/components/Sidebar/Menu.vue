@@ -1,7 +1,7 @@
 <template>
   <el-menu
-    active-text-color="#212121"
-    background-color="#409EFF"
+    active-text-color="#ffffff"
+    background-color="#01182a"
     class="sidebar-container"
     text-color="#fff"
     :collapse="collapse"

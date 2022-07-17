@@ -214,7 +214,7 @@ const routes: Array<RouteRecordRaw> = [
                     },
                     {
                         path: 'admin',
-                        component: () => import('../views/goods/index.vue'),
+                        component: () => import('../views/setting/admin/index.vue'),
                         meta: {
                             title: '管理员管理'
                         }

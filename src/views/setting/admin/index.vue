@@ -12,19 +12,12 @@
                 <el-button @click="onAdd" type="primary" size="small" icon="Plus">新增</el-button>
             </el-form-item>
         </el-form>
-        <el-table
-            :data="tableData"
-            stripe
-            style="width: 100%"
-            v-loading="tableLoading"
-            :cell-style="{ 'text-align': 'center' }"
-            :header-cell-style="{
+        <el-table :data="tableData" stripe style="width: 100%" v-loading="tableLoading"
+            :cell-style="{ 'text-align': 'center' }" :header-cell-style="{
                 background: '#F5F7FA',
                 color: '#606266',
                 textAlign: 'center'
-            }"
-            border
-        >
+            }" border>
             <el-table-column prop="userName" label="用户名" />
             <el-table-column prop="email" label="邮箱" />
             <el-table-column prop="mobile" label="手机号" />
@@ -35,28 +28,21 @@
             <el-table-column align="center" fixed="right" label="操作" width="100">
                 <template #default="scope">
                     <el-button type="text" size="small" @click="onEdit(scope.row.id)">编辑</el-button>
-                    <el-button type="text" size="small" @click="onDelete(scope.row.id)" style="color: red"
-                        >删除
+                    <el-button type="text" size="small" @click="onDelete(scope.row.id)" style="color: red">删除
                     </el-button>
                 </template>
             </el-table-column>
         </el-table>
         <div class="flex-box flex-h-end">
-            <el-pagination
-                background
-                layout="total,prev,sizes,pager, next"
-                :total="total"
-                @size-change="handleSizeChange"
-                :pageSize="searchForm.pageInfo.pageSize"
-                :currentPage="searchForm.pageInfo.pageNo"
-                @current-change="handlePageChange"
-            >
+            <el-pagination background layout="total,prev,sizes,pager, next" :total="total"
+                @size-change="handleSizeChange" :pageSize="searchForm.pageInfo.pageSize"
+                :currentPage="searchForm.pageInfo.pageNo" @current-change="handlePageChange">
             </el-pagination>
         </div>
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import mixins from '@/mixins/tableMixins';
 export default {
     mixins: [mixins],

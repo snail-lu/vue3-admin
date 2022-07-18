@@ -25,13 +25,17 @@
             }"
             border
         >
-            <el-table-column prop="username" label="用户名" />
+            <el-table-column prop="userName" label="用户名" />
             <el-table-column prop="email" label="邮箱" />
-            <el-table-column prop="adminLevel" label="管理员等级" />
+            <el-table-column prop="mobile" label="手机号" />
+            <el-table-column prop="roleType" label="角色" />
+            <el-table-column prop="status" label="状态" />
+            <el-table-column prop="createTime" label="创建时间" />
+            <el-table-column prop="updateTime" label="更新时间" />
             <el-table-column align="center" fixed="right" label="操作" width="100">
-                <template slot-scope="scope">
-                    <el-button type="text" size="small" @click="onEdit(scope.row._id)">编辑</el-button>
-                    <el-button type="text" size="small" @click="onDelete(scope.row._id)" style="color: red"
+                <template #default="scope">
+                    <el-button type="text" size="small" @click="onEdit(scope.row.id)">编辑</el-button>
+                    <el-button type="text" size="small" @click="onDelete(scope.row.id)" style="color: red"
                         >删除
                     </el-button>
                 </template>

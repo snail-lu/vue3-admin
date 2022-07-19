@@ -11,7 +11,7 @@
             <el-icon class="fullscreen-icon" :size="24" color="#ffffff" @click="handleFullScreen" title="全屏">
                 <full-screen />
             </el-icon>
-            <el-dropdown @command="logout" trigger="click">
+            <el-dropdown @command="handleCommand" trigger="click">
                 <div class="flex-box flex-v-center">
                     Hi,
                     <span class="user-name flex-box flex-v-center">
@@ -24,7 +24,8 @@
 
                 <template #dropdown>
                     <el-dropdown-menu>
-                        <el-dropdown-item>退出登录</el-dropdown-item>
+                        <el-dropdown-item command="logout">退出登录</el-dropdown-item>
+                        <el-dropdown-item command="github">项目仓库</el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
             </el-dropdown>
@@ -60,9 +61,22 @@ function handleFullScreen() {
 }
 
 const router = useRouter();
+
+const handleCommand = (command: string) => {
+    switch (command) {
+        case 'logout':
+            logout();
+            break;
+        case 'github':
+            goToGithub();
+            break;
+        default:
+            break;
+    }
+};
 // 登出
 function logout() {
-    ElMessageBox.confirm('确定退出登录吗', '提示', {
+    ElMessageBox.confirm('确定退出登录吗', '登出', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
@@ -74,6 +88,11 @@ function logout() {
         },
         () => {}
     );
+}
+
+// 跳转github
+function goToGithub() {
+    window.open('https://github.com/Snail-Lu/vue3-ts-admin');
 }
 </script>
 
@@ -117,7 +136,7 @@ function logout() {
         }
 
         .user-name {
-            color: rgb(14, 236, 133);
+            color: #44a2fd;
             cursor: pointer;
             user-select: none;
             margin-left: 4px;

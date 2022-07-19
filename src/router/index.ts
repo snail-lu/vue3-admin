@@ -31,14 +31,14 @@ const routes: Array<RouteRecordRaw> = [
                 children: [
                     {
                         path: 'list',
-                        component: () => import('../views/goods/index.vue'),
+                        component: () => import('../views/pages/index.vue'),
                         meta: {
                             title: '页面列表'
                         }
                     },
                     {
-                        path: 'category',
-                        component: () => import('../views/goods/index.vue'),
+                        path: 'content',
+                        component: () => import('../views/pages/content.vue'),
                         meta: {
                             title: '内容列表'
                         }
@@ -65,7 +65,7 @@ const routes: Array<RouteRecordRaw> = [
                     },
                     {
                         path: 'category',
-                        component: () => import('../views/goods/index.vue'),
+                        component: () => import('../views/goods/category.vue'),
                         meta: {
                             title: '商品分类'
                         }
@@ -75,6 +75,13 @@ const routes: Array<RouteRecordRaw> = [
                         component: () => import('../views/goods/inventory.vue'),
                         meta: {
                             title: '库存列表'
+                        }
+                    },
+                    {
+                        path: 'comments',
+                        component: () => import('../views/goods/comments.vue'),
+                        meta: {
+                            title: '评论列表'
                         }
                     }
                 ]
@@ -92,16 +99,16 @@ const routes: Array<RouteRecordRaw> = [
                 children: [
                     {
                         path: 'list',
-                        component: () => import('../views/goods/index.vue'),
+                        component: () => import('../views/order/index.vue'),
                         meta: {
                             title: '订单列表'
                         }
                     },
                     {
                         path: 'refund',
-                        component: () => import('../views/goods/inventory.vue'),
+                        component: () => import('../views/order/refund.vue'),
                         meta: {
-                            title: '退单列表'
+                            title: '售后列表'
                         }
                     }
                 ]
@@ -119,16 +126,9 @@ const routes: Array<RouteRecordRaw> = [
                 children: [
                     {
                         path: 'list',
-                        component: () => import('../views/goods/index.vue'),
+                        component: () => import('../views/member/index.vue'),
                         meta: {
                             title: '会员列表'
-                        }
-                    },
-                    {
-                        path: 'address',
-                        component: () => import('../views/goods/index.vue'),
-                        meta: {
-                            title: '评论列表'
                         }
                     }
                 ]
@@ -146,21 +146,21 @@ const routes: Array<RouteRecordRaw> = [
                 children: [
                     {
                         path: 'list',
-                        component: () => import('../views/goods/index.vue'),
+                        component: () => import('../views/activity/index.vue'),
                         meta: {
                             title: '活动列表'
                         }
                     },
                     {
                         path: 'calendar',
-                        component: () => import('../views/goods/index.vue'),
+                        component: () => import('../views/activity/calendar.vue'),
                         meta: {
                             title: '活动日历'
                         }
                     },
                     {
                         path: 'coupon',
-                        component: () => import('../views/goods/index.vue'),
+                        component: () => import('../views/activity/coupon.vue'),
                         meta: {
                             title: '优惠券'
                         }
@@ -180,14 +180,14 @@ const routes: Array<RouteRecordRaw> = [
                 children: [
                     {
                         path: 'list',
-                        component: () => import('../views/goods/index.vue'),
+                        component: () => import('../views/shop/index.vue'),
                         meta: {
                             title: '门店列表'
                         }
                     },
                     {
                         path: 'guide',
-                        component: () => import('../views/goods/index.vue'),
+                        component: () => import('../views/shop/guide.vue'),
                         meta: {
                             title: '导购列表'
                         }
@@ -207,21 +207,21 @@ const routes: Array<RouteRecordRaw> = [
                 children: [
                     {
                         path: 'freight',
-                        component: () => import('../views/goods/index.vue'),
+                        component: () => import('../views/setting/freight.vue'),
                         meta: {
                             title: '运费设置'
                         }
                     },
                     {
                         path: 'admin',
-                        component: () => import('../views/setting/admin/index.vue'),
+                        component: () => import('../views/setting/admin.vue'),
                         meta: {
                             title: '管理员管理'
                         }
                     },
                     {
                         path: 'dictionary',
-                        component: () => import('../views/goods/index.vue'),
+                        component: () => import('../views/setting/dictionary.vue'),
                         meta: {
                             title: '数据字典'
                         }

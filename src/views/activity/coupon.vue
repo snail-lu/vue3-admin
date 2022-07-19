@@ -1,5 +1,5 @@
 <template>
-    <div>商品列表</div>
+    <div>优惠券</div>
 </template>
 
 <script setup lang="ts">

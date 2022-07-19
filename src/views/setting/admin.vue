@@ -16,7 +16,6 @@
             :data="tableData"
             stripe
             style="width: 100%"
-            v-loading="tableLoading"
             :cell-style="{ 'text-align': 'center' }"
             :header-cell-style="{
                 background: '#F5F7FA',
@@ -29,7 +28,7 @@
             <el-table-column prop="email" label="邮箱" />
             <el-table-column prop="mobile" label="手机号" />
             <el-table-column prop="roleTypeDesc" label="角色" />
-            <el-table-column prop="status" label="状态">
+            <el-table-column prop="status" label="状态" width="80px">
                 <template #default="scope">
                     <el-tag :type="scope.row.status === 1 ? 'success' : 'danger'" disable-transitions>{{
                         scope.row.status === 1 ? '启用' : '停用'
@@ -73,7 +72,7 @@ const searchForm = ref({
     }
 });
 
-const { tableData, tableLoading, total, onSearch, handlePageChange, handleSizeChange } = tableSearch({
+const { tableData, total, onSearch, handlePageChange, handleSizeChange } = tableSearch({
     searchForm,
     searchUrl: '/admin/list'
 });

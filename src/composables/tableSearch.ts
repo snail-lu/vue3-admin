@@ -4,24 +4,17 @@ import { responseDto } from '@/types/request';
 
 export default function tableSearch({ searchForm, searchUrl }) {
     const tableData = ref([]);
-    const tableLoading = ref(false);
     const total = ref(0);
 
     // 请求列表数据
     const getTableData = async () => {
-        tableLoading.value = true;
-
         try {
             let res: responseDto = await request({ url: searchUrl, data: searchForm.value, method: 'POST' });
             if (res && res.result) {
-                console.log(res.result);
                 tableData.value = res.result.list;
                 total.value = res.result.total;
-                tableLoading.value = false;
             }
-        } catch (e) {
-            tableLoading.value = false;
-        }
+        } catch (e) {}
     };
 
     // 页码修改
@@ -43,7 +36,6 @@ export default function tableSearch({ searchForm, searchUrl }) {
 
     return {
         tableData,
-        tableLoading,
         total,
         onSearch,
         handlePageChange,

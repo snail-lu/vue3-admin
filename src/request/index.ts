@@ -10,7 +10,6 @@ const request = axios.create({
         'Content-Type': 'application/json;charset=utf-8'
     }
 });
-
 // 请求拦截
 request.interceptors.request.use((config) => {
     config.headers = config.headers || {};

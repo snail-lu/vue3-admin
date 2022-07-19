@@ -26,6 +26,7 @@ declare module '@vue/runtime-core' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+    ElTag: typeof import('element-plus/es')['ElTag']
     Layout: typeof import('./src/components/layout/index.vue')['default']
     Loading: typeof import('element-plus/es')['ElLoadingDirective']
     Menu: typeof import('./src/components/Sidebar/Menu.vue')['default']

@@ -7,6 +7,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AppHeader: typeof import('./src/components/layout/AppHeader.vue')['default']
     AppMain: typeof import('./src/components/layout/AppMain.vue')['default']
+    BarChart: typeof import('./src/components/Chart/BarChart.vue')['default']
     Breadcrumb: typeof import('./src/components/layout/Breadcrumb.vue')['default']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
@@ -33,6 +34,7 @@ declare module '@vue/runtime-core' {
     Loading: typeof import('element-plus/es')['ElLoadingDirective']
     Menu: typeof import('./src/components/Sidebar/Menu.vue')['default']
     MenuItem: typeof import('./src/components/Sidebar/MenuItem.vue')['default']
+    PieChart: typeof import('./src/components/Chart/PieChart.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Sidebar: typeof import('./src/components/Sidebar/index.vue')['default']

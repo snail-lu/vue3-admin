@@ -50,7 +50,7 @@
         </el-row>
     </div>
 </template>
-<script lang="ts">
+<script lang="ts" setup>
 import BarChart from '../components/Chart/BarChart.vue';
 import PieChart from '../components/Chart/PieChart.vue';
 </script>

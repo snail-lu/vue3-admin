@@ -1,8 +1,10 @@
 <template>
     <section class="app-main">
-        <transition name="fade-transform" mode="out-in">
-            <router-view :key="key" />
-        </transition>
+        <router-view v-slot="{ Component }">
+            <transition name="fade-transform" mode="out-in">
+                <component :is="Component" />
+            </transition>
+        </router-view>
     </section>
 </template>
 
@@ -43,6 +45,7 @@ export default defineComponent({
     min-height: calc(100vh - 160px);
     box-sizing: border-box;
 }
+
 .fixed-header + .app-main {
     padding-top: 50px;
 }

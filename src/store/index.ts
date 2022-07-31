@@ -11,6 +11,7 @@ const vuexLocal = new VuexPersistence({
 export const store = createStore({
     state() {
         return {
+            userInfo: null,
             isCollapse: false,
             isLogined: false
         };
@@ -23,6 +24,10 @@ export const store = createStore({
         // 修改登录状态
         changeLoginStatus(state: StateDto, { isLogined }) {
             state.isLogined = isLogined;
+        },
+        // 存储登录用户信息
+        setUserInfo(state: StateDto, { userInfo }) {
+            state.userInfo = userInfo;
         }
     },
     plugins: [vuexLocal.plugin]

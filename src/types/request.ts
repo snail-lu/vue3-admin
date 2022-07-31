@@ -1,3 +1,6 @@
 export interface responseDto {
-    result: object;
+    code: number;
+    message?: string;
+    result?: object;
+    success: boolean;
 }

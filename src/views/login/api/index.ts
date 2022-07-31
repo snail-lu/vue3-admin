@@ -4,7 +4,7 @@ import { LoginFormDto } from '../../../types/login';
 export function login(data: LoginFormDto) {
     return request({
         method: 'POST',
-        url: '/login',
+        url: '/admin/login',
         data
     });
 }

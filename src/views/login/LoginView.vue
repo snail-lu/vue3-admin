@@ -3,8 +3,8 @@
         <div class="login-form-wrapper">
             <h1 class="title">系统登录</h1>
             <el-form ref="loginFormRef" :model="loginForm" :rules="rules" class="login-form" status-icon>
-                <el-form-item label="" prop="userName">
-                    <el-input placeholder="用户名" v-model="loginForm.userName">
+                <el-form-item label="" prop="username">
+                    <el-input placeholder="用户名" v-model="loginForm.username">
                         <template #prepend> <el-button icon="User" /> </template>
                     </el-input>
                 </el-form-item>
@@ -36,13 +36,13 @@ const router = useRouter();
 // 表单ref及数据
 const loginFormRef = ref<FormInstance>();
 const loginForm = reactive<LoginFormDto>({
-    userName: 'admin',
+    username: 'admin',
     password: '123456'
 });
 
 // 表单校验规则
 const rules = {
-    userName: [
+    username: [
         { required: true, message: '请输入用户名', trigger: 'blur' },
         { min: 3, max: 10, message: '用户名长度需要3~10个字符', trigger: 'blur' }
     ],
@@ -56,15 +56,21 @@ const rules = {
 const store = useStore();
 const changeLoginStatus = () => store.commit('changeLoginStatus', { isLogined: true });
 
+// 登录用户信息保存
+const setLoginUserInfo = (userInfo: object) => store.commit('setUserInfo', { userInfo });
+
 // 表单提交
 const submitForm = async (formEl: FormInstance | undefined) => {
     if (!formEl) return;
     await formEl.validate((valid, fields) => {
         if (valid) {
             login(loginForm).then((res) => {
-                changeLoginStatus();
-                ElMessage.success('登录成功~');
-                router.push({ path: '/' });
+                if (res && res.success) {
+                    changeLoginStatus();
+                    setLoginUserInfo(res.result);
+                    ElMessage.success('登录成功~');
+                    router.push({ path: '/' });
+                }
             });
         }
     });

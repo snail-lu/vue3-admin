@@ -1,5 +1,89 @@
 <template>
-    <div>页面列表</div>
+    <div>
+        <el-form ref="searchForm" :inline="true" :model="searchForm" label-width="100px" label-position="right">
+            <el-form-item label="页面名称:" prop="pageName">
+                <el-input v-model="searchForm.pageName" clearable placeholder="页面名称" />
+            </el-form-item>
+            <el-form-item label="创建时间:" prop="createTime">
+                <el-date-picker
+                    v-model="createTime"
+                    type="daterange"
+                    range-separator="至"
+                    start-placeholder="开始日期"
+                    format="yyyy年MM月dd日"
+                    value-format="yyyy-MM-dd"
+                    end-placeholder="结束日期"
+                    @change="bindChangeCreateTime"
+                >
+                </el-date-picker>
+            </el-form-item>
+            <el-form-item class="btn-box">
+                <el-button type="primary" size="mini" @click="onSearch">查询</el-button>
+                <el-button type="primary" size="mini" @click="onAdd">新增</el-button>
+            </el-form-item>
+        </el-form>
+        <el-table
+            :data="tableData"
+            stripe
+            height="620"
+            border
+            :header-cell-style="{ background: '#F5F7FA', color: '#606266', textAlign: 'center' }"
+            :cell-style="{ textAlign: 'center' }"
+        >
+            <el-table-column prop="pageCode" label="页面编码" width="200" />
+            <el-table-column prop="pageName" label="页面名称" />
+            <el-table-column prop="status" label="状态">
+                <template #default="scope">
+                    <el-switch
+                        :value="scope.row.status"
+                        @change="onChangePageStatus(scope.row)"
+                        :active-value="1"
+                        :inactive-value="0"
+                    >
+                    </el-switch>
+                </template>
+            </el-table-column>
+            <el-table-column prop="createUserName" label="创建人" />
+            <el-table-column prop="createTime" label="创建时间" width="200" />
+            <el-table-column prop="updateUserName" label="修改人" />
+            <el-table-column prop="updateTime" label="修改时间" width="200" />
+            <el-table-column label="操作" width="280">
+                <template slot-scope="scope">
+                    <el-button type="text" size="small" @click="onEdit(scope.row.id)">编辑</el-button>
+                    <el-button type="text" size="small" @click="onShowPanelDialog(scope.row)">查看内容</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+        <el-pagination
+            background
+            layout="total ,prev, sizes, pager, next"
+            :total="total"
+            :page-sizes="[10, 20, 50, 100]"
+            :page-size="searchForm.pageInfo.pageSize"
+            :current-page="searchForm.pageInfo.pageNum"
+            @current-change="handlePageChange"
+            @size-change="handleSizeChange"
+        />
+    </div>
 </template>
+<script setup lang="ts">
+import { reactive } from 'vue';
+import tableSearch from '@/composables/tableSearch';
 
+const searchForm = reactive({
+    pageName: '', // 名称
+    createTimeStart: '', // 创建时间起始值
+    createTimeEnd: '', // 创建时间结束值
+    pageInfo: {
+        pageNum: 1,
+        pageSize: 10,
+        sort: true
+    }
+});
+
+const { tableData, total, onSearch, handlePageChange, handleSizeChange } = tableSearch({
+    searchForm,
+    searchUrl: '/admin/list'
+});
+</script>
 <style scoped></style>

@@ -1,28 +1,29 @@
 <template>
-  <div>
-    <AppHeader />
-    <div class="content">
-      <Sidebar />
-      <div class="main">
-        <Breadcrumb />
-        <AppMain />
-      </div>
+    <div>
+        <AppHeader />
+        <div class="content">
+            <Sidebar />
+            <div class="main">
+                <Breadcrumb />
+                <AppMain />
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script lang="ts" setup>
-import AppMain from "./AppMain.vue";
-import Sidebar from "../Sidebar/index.vue";
-import AppHeader from "./AppHeader.vue";
-import Breadcrumb from "./Breadcrumb.vue";
+import AppMain from './AppMain.vue';
+import Sidebar from '../Sidebar/index.vue';
+import AppHeader from './AppHeader.vue';
+import Breadcrumb from './Breadcrumb.vue';
 </script>
 <style lang="scss" scoped>
 .content {
-  display: flex;
+    display: flex;
 
-  .main {
-    flex: 1;
-  }
+    .main {
+        flex: 1;
+        overflow-x: hidden;
+    }
 }
 </style>

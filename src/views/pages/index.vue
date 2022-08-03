@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div class="root">
         <el-form ref="searchForm" :inline="true" :model="searchForm" label-position="right">
             <el-form-item label="页面名称:" prop="pageName">
-                <el-input v-model="searchForm.pageName" clearable placeholder="页面名称" />
+                <el-input v-model="searchForm.pageName" size="small" clearable placeholder="页面名称" />
             </el-form-item>
             <el-form-item label="创建时间:" prop="createTime">
                 <el-date-picker
@@ -14,18 +14,18 @@
                     value-format="yyyy-MM-dd"
                     end-placeholder="结束日期"
                     @change="bindChangeCreateTime"
+                    size="small"
                 >
                 </el-date-picker>
             </el-form-item>
             <el-form-item class="btn-box">
-                <el-button type="primary" size="mini" @click="onSearch">查询</el-button>
-                <el-button type="primary" size="mini" @click="onAdd">新增</el-button>
+                <el-button type="primary" size="small" icon="search" @click="onSearch">查询</el-button>
+                <el-button type="primary" size="small" icon="plus" @click="onAdd">新增</el-button>
             </el-form-item>
         </el-form>
         <el-table
             :data="tableData"
             stripe
-            height="620"
             border
             :header-cell-style="{ color: '#888', textAlign: 'center' }"
             :cell-style="{ textAlign: 'center' }"
@@ -54,16 +54,18 @@
                 </template>
             </el-table-column>
         </el-table>
-        <el-pagination
-            background
-            layout="total ,prev, sizes, pager, next"
-            :total="total"
-            :page-sizes="[10, 20, 50, 100]"
-            :page-size="searchForm.pageInfo.pageSize"
-            :current-page="searchForm.pageInfo.pageNum"
-            @current-change="handlePageChange"
-            @size-change="handleSizeChange"
-        />
+        <div class="flex-box flex-h-end">
+            <el-pagination
+                background
+                layout="total ,prev, sizes, pager, next"
+                :total="total"
+                :page-sizes="[10, 20, 50, 100]"
+                :page-size="searchForm.pageInfo.pageSize"
+                :current-page="searchForm.pageInfo.pageNum"
+                @current-change="handlePageChange"
+                @size-change="handleSizeChange"
+            />
+        </div>
     </div>
 </template>
 <script setup lang="ts">
@@ -81,11 +83,11 @@ const searchForm = reactive({
     }
 });
 
-console.log('hello world');
-
 const { tableData, total, onSearch, handlePageChange, handleSizeChange } = tableSearch({
     searchForm,
     searchUrl: '/admin/list'
 });
+
+const onAdd = () => {};
 </script>
 <style scoped></style>

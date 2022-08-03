@@ -19,18 +19,18 @@ export default function tableSearch({ searchForm, searchUrl }) {
 
     // 页码修改
     const handlePageChange = (currentPage) => {
-        searchForm.value.pageInfo.pageNo = currentPage;
+        searchForm.pageInfo.pageNo = currentPage;
         getTableData();
     };
 
     // 每页数量修改
     const handleSizeChange = (currentPage) => {
-        searchForm.value.pageInfo.pageSize = currentPage;
+        searchForm.pageInfo.pageSize = currentPage;
         getTableData();
     };
     // 查询
     const onSearch = () => {
-        searchForm.value.pageInfo.pageNo = 1;
+        searchForm.pageInfo.pageNo = 1;
         getTableData();
     };
 

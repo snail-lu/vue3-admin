@@ -38,12 +38,7 @@ export default defineComponent({
 }
 
 .root {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 30px;
     min-height: calc(100vh - 160px);
-    box-sizing: border-box;
 }
 
 .fixed-header + .app-main {

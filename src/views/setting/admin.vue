@@ -57,10 +57,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
+import { onMounted, reactive } from 'vue';
 import tableSearch from '@/composables/tableSearch';
 
-const searchForm = ref({
+const searchForm = reactive({
     userName: '',
     email: '',
     pageInfo: {

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-form ref="searchForm" :inline="true" :model="searchForm" label-width="100px" label-position="right">
+        <el-form ref="searchForm" :inline="true" :model="searchForm" label-position="right">
             <el-form-item label="页面名称:" prop="pageName">
                 <el-input v-model="searchForm.pageName" clearable placeholder="页面名称" />
             </el-form-item>
@@ -27,10 +27,10 @@
             stripe
             height="620"
             border
-            :header-cell-style="{ background: '#F5F7FA', color: '#606266', textAlign: 'center' }"
+            :header-cell-style="{ color: '#888', textAlign: 'center' }"
             :cell-style="{ textAlign: 'center' }"
         >
-            <el-table-column prop="pageCode" label="页面编码" width="200" />
+            <el-table-column prop="pageCode" label="页面编码" />
             <el-table-column prop="pageName" label="页面名称" />
             <el-table-column prop="status" label="状态">
                 <template #default="scope">
@@ -44,10 +44,10 @@
                 </template>
             </el-table-column>
             <el-table-column prop="createUserName" label="创建人" />
-            <el-table-column prop="createTime" label="创建时间" width="200" />
+            <el-table-column prop="createTime" label="创建时间" />
             <el-table-column prop="updateUserName" label="修改人" />
-            <el-table-column prop="updateTime" label="修改时间" width="200" />
-            <el-table-column label="操作" width="280">
+            <el-table-column prop="updateTime" label="修改时间" />
+            <el-table-column label="操作">
                 <template slot-scope="scope">
                     <el-button type="text" size="small" @click="onEdit(scope.row.id)">编辑</el-button>
                     <el-button type="text" size="small" @click="onShowPanelDialog(scope.row)">查看内容</el-button>
@@ -80,6 +80,8 @@ const searchForm = reactive({
         sort: true
     }
 });
+
+console.log('hello world');
 
 const { tableData, total, onSearch, handlePageChange, handleSizeChange } = tableSearch({
     searchForm,

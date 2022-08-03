@@ -24,6 +24,7 @@ import Breadcrumb from './Breadcrumb.vue';
     .main {
         flex: 1;
         overflow-x: hidden;
+        position: relative;
     }
 }
 </style>

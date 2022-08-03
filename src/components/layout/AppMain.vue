@@ -31,10 +31,10 @@ export default defineComponent({
     width: 100%;
     position: relative;
     overflow-x: hidden;
-    background-color: #f0f0f0;
     padding: 25px;
     box-sizing: border-box;
     overflow-y: auto;
+    margin-top: 50px;
 }
 
 .root {

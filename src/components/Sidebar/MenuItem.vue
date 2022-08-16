@@ -8,7 +8,7 @@
       <span>{{ menu.meta?.title }}</span>
     </template>
     <template v-for="subItem in menu.children" :key="subItem.path">
-      <MenuItem :menu="subItem" :base-path="`${basePath}/${menu.path}`" />
+      <MenuItem :menu="subItem" :base-path="`${basePath}/${menu.path}`" v-if="!subItem.meta.hidden" />
     </template>
   </el-sub-menu>
 
@@ -28,4 +28,5 @@ const props = defineProps({
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

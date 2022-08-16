@@ -1,5 +1,5 @@
 <template>
-    <div>内容列表</div>
+    <div>组件库</div>
 </template>
 
 <script setup lang="ts">
@@ -8,4 +8,5 @@ const list = getGoodsList({ goodsCode: '', pageInfo: {} });
 console.log(list, 'list');
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

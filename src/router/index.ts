@@ -25,7 +25,7 @@ const routes: Array<RouteRecordRaw> = [
                     render: () => h(resolveComponent('router-view'))
                 },
                 meta: {
-                    title: '页面管理',
+                    title: '页面装修',
                     icon: 'Document'
                 },
                 children: [
@@ -37,10 +37,18 @@ const routes: Array<RouteRecordRaw> = [
                         }
                     },
                     {
-                        path: 'content',
-                        component: () => import('../views/pages/content.vue'),
+                        path: 'component-lib',
+                        component: () => import('../views/pages/lib.vue'),
                         meta: {
-                            title: '内容列表'
+                            title: '组件库'
+                        }
+                    },
+                    {
+                        path: 'add',
+                        component: () => import('../views/pages/add.vue'),
+                        meta: {
+                            title: '新增页面',
+                            hidden: true
                         }
                     }
                 ]

@@ -1,34 +1,36 @@
 <template>
     <div>
-        <div class="module">
-            <div class="module-title">今日交易数据</div>
-            <el-row :gutter="12">
-                <el-col :span="6">
-                    <el-card shadow="hover" class="bg-1">
-                        <div class="amount">14,322</div>
-                        <div class="label">访问人数</div>
-                    </el-card>
-                </el-col>
-                <el-col :span="6">
-                    <el-card shadow="hover" class="bg-2">
-                        <div class="amount">13,200</div>
-                        <div class="label">交易单数</div>
-                    </el-card>
-                </el-col>
-                <el-col :span="6">
-                    <el-card shadow="hover" class="bg-3">
-                        <div class="amount">2,085,600</div>
-                        <div class="label">交易金额</div>
-                    </el-card>
-                </el-col>
-                <el-col :span="6">
-                    <el-card shadow="hover" class="bg-4">
-                        <div class="amount">158</div>
-                        <div class="label">客单价</div>
-                    </el-card>
-                </el-col>
-            </el-row>
-        </div>
+        <el-card shadow="hover" :body-style="{ padding: 0 }">
+            <div class="module">
+                <div class="module-title">今日交易数据</div>
+                <el-row :gutter="12">
+                    <el-col :span="6">
+                        <el-card shadow="hover" class="bg-1">
+                            <div class="amount">14,322</div>
+                            <div class="label">访问人数</div>
+                        </el-card>
+                    </el-col>
+                    <el-col :span="6">
+                        <el-card shadow="hover" class="bg-2">
+                            <div class="amount">13,200</div>
+                            <div class="label">交易单数</div>
+                        </el-card>
+                    </el-col>
+                    <el-col :span="6">
+                        <el-card shadow="hover" class="bg-3">
+                            <div class="amount">2,085,600</div>
+                            <div class="label">交易金额</div>
+                        </el-card>
+                    </el-col>
+                    <el-col :span="6">
+                        <el-card shadow="hover" class="bg-4">
+                            <div class="amount">158</div>
+                            <div class="label">客单价</div>
+                        </el-card>
+                    </el-col>
+                </el-row>
+            </div>
+        </el-card>
 
         <el-row :gutter="20" class="mt-10">
             <el-col :span="12">

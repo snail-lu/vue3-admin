@@ -9,7 +9,7 @@ export default function tableSearch({ searchForm, searchUrl }) {
     // 请求列表数据
     const getTableData = async () => {
         try {
-            let res: responseDto = await request({ url: searchUrl, data: searchForm.value, method: 'POST' });
+            let res: responseDto = await request({ url: searchUrl, data: searchForm, method: 'POST' });
             if (res && res.result) {
                 tableData.value = res.result.list;
                 total.value = res.result.total;

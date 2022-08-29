@@ -226,13 +226,6 @@ const routes: Array<RouteRecordRaw> = [
                         meta: {
                             title: '管理员管理'
                         }
-                    },
-                    {
-                        path: 'dictionary',
-                        component: () => import('../views/setting/dictionary.vue'),
-                        meta: {
-                            title: '数据字典'
-                        }
                     }
                 ]
             }

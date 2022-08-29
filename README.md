@@ -1,24 +1,17 @@
-# vue3-ts-admin
+<h2 align="center">商城管理系统</h2>
+<p align="center">
+    <a href="https://mall-management.vercel.app" target="_blank">线上地址</a>
+    ·
+    <a href="https://github.com/Snail-Lu/vue3-ts-admin" target="_blank">仓库地址</a>
+    ·
+    <a href="https://github.com/Snail-Lu/vue3-ts-admin/issues" target="_blank">建议意见</a>
+</p>
 
-## Project setup
-```
-npm install
-```
+## 简介
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+基于`Vue3` + `TypeScript` + `Element-Plus` 开发的商城管理系统。
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## 项目截图
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![](https://s1.ax1x.com/2022/08/29/vfB5jg.png)
+![](https://s1.ax1x.com/2022/08/29/vfB4gS.png)

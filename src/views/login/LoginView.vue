@@ -5,7 +5,9 @@
             <el-form ref="loginFormRef" :model="loginForm" :rules="rules" class="login-form" status-icon>
                 <el-form-item label="" prop="username">
                     <el-input placeholder="用户名" v-model="loginForm.username">
-                        <template #prepend> <el-button icon="User" /> </template>
+                        <template #prepend>
+                            <el-button icon="User" />
+                        </template>
                     </el-input>
                 </el-form-item>
                 <el-form-item label="" prop="password">
@@ -30,6 +32,7 @@ import { useStore } from 'vuex';
 import { FormInstance, ElMessage } from 'element-plus';
 import { LoginFormDto } from '../../types/login';
 import { login } from './api/index';
+import md5 from 'md5';
 
 // 路由示例
 const router = useRouter();
@@ -62,9 +65,9 @@ const setLoginUserInfo = (userInfo: object) => store.commit('setUserInfo', { use
 // 表单提交
 const submitForm = async (formEl: FormInstance | undefined) => {
     if (!formEl) return;
-    await formEl.validate((valid, fields) => {
+    await formEl.validate((valid) => {
         if (valid) {
-            login(loginForm).then((res) => {
+            login({ ...loginForm, password: md5(loginForm.password) }).then((res) => {
                 if (res && res.success) {
                     changeLoginStatus();
                     setLoginUserInfo(res.result);

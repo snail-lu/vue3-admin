@@ -14,6 +14,7 @@
         </el-form>
         <el-table
             :data="tableData"
+            v-loading="loading"
             stripe
             style="width: 100%"
             :cell-style="{ 'text-align': 'center' }"
@@ -41,7 +42,11 @@
             <el-table-column align="center" fixed="right" label="操作" width="100">
                 <template #default="scope">
                     <el-button link size="small" @click="onEdit(scope.row)" type="primary">编辑</el-button>
-                    <el-button link size="small" @click="onDelete(scope.row)" type="danger">删除 </el-button>
+                    <el-popconfirm title="确认删除该管理员?" @confirm="onDelete(scope.row)">
+                        <template #reference>
+                            <el-button link size="small" @click="" type="danger">删除 </el-button>
+                        </template>
+                    </el-popconfirm>
                 </template>
             </el-table-column>
         </el-table>
@@ -58,7 +63,7 @@
             </el-pagination>
         </div>
 
-        <AddAdmin ref="addForm" title="新增管理员" @confirm="onConfirm" />
+        <AddAdmin ref="addForm" @confirm="onConfirm" />
     </div>
 </template>
 
@@ -66,6 +71,7 @@
 import { onMounted, reactive, ref } from 'vue';
 import tableSearch from '@/composables/tableSearch';
 import AddAdmin from './components/AddAdmin.vue';
+import { deleteAdmin, updateAdmin } from './api/index';
 
 const searchForm = reactive({
     userName: '',
@@ -76,7 +82,7 @@ const searchForm = reactive({
     }
 });
 
-const { tableData, total, onSearch, handlePageChange, handleSizeChange } = tableSearch({
+const { tableData, total, handlePageChange, handleSizeChange, onSearch, loading } = tableSearch({
     searchForm,
     searchUrl: '/admin/list'
 });
@@ -85,21 +91,21 @@ onMounted(() => {
     onSearch();
 });
 
-const addForm = ref(null);
+const addForm = ref();
 // 新增
 const onAdd = () => {
     addForm.value.show();
-    console.log('新增');
 };
 
 // 编辑
 const onEdit = (userInfo: Object) => {
-    console.log(userInfo);
+    addForm.value.show(userInfo);
 };
 
 // 删除
-const onDelete = (userInfo: Object) => {
-    console.log(userInfo);
+const onDelete = async (userInfo: { id: string }) => {
+    await deleteAdmin({ id: userInfo.id });
+    onSearch();
 };
 
 // 编辑弹窗确认

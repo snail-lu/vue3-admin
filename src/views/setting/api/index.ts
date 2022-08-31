@@ -4,7 +4,8 @@ import { adminListRequestDto, adminUpdateRequestDto } from '@/types/admin';
 const urls = {
     login: '/admin/list',
     register: '/admin/register',
-    update: '/admin/update'
+    update: '/admin/update',
+    delete: '/admin/delete'
 };
 
 // 管理员新增
@@ -29,6 +30,15 @@ export function updateAdmin(data: adminUpdateRequestDto) {
 export function getAdminsList(data: adminListRequestDto) {
     return request({
         url: urls.login,
+        method: 'post',
+        data
+    });
+}
+
+// 管理员删除
+export function deleteAdmin(data: object) {
+    return request({
+        url: urls.delete,
         method: 'post',
         data
     });

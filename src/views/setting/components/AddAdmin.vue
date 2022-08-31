@@ -35,15 +35,11 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
 import { Md5 } from 'ts-md5';
-import { addAdmin } from '../api/index';
+import { addAdmin, updateAdmin } from '../api/index';
 import type { FormInstance, FormRules } from 'element-plus';
 
-defineProps<{
-    title: String;
-}>();
-
 const formRef = ref<FormInstance>();
-const form = reactive({
+const form = ref({
     username: '',
     email: '',
     password: Md5.hashStr('123456'),
@@ -80,20 +76,37 @@ const onCancel = () => {
 // 保存操作
 const onConfirm = async (formEl: FormInstance) => {
     let valid = await formEl.validate();
-    if (valid) {
-        let res = await addAdmin(form);
-        if (res && res.result) {
-            hide();
-            emit('confirm', true);
-        }
+    if (!valid) return false;
+
+    let res = null;
+    if (form.value.id) {
+        res = await updateAdmin(form.value);
+    } else {
+        res = await addAdmin(form.value);
     }
-    // debugger;
+    if (res && res.result) {
+        hide();
+        emit('confirm', true);
+    }
 };
 
 const visible = ref(false);
+const title = ref('新增管理员');
 // 显示组件
-const show = () => {
+const show = (data: object) => {
     visible.value = true;
+    if (data) {
+        title.value = '编辑管理员';
+        form.value = data;
+    } else {
+        form.value = {
+            username: '',
+            email: '',
+            password: Md5.hashStr('123456'),
+            level: 3,
+            status: 1
+        };
+    }
 };
 
 // 隐藏组件

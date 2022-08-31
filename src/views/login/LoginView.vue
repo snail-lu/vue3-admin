@@ -32,7 +32,7 @@ import { useStore } from 'vuex';
 import { FormInstance, ElMessage } from 'element-plus';
 import { LoginFormDto } from '../../types/login';
 import { login } from './api/index';
-import md5 from 'md5';
+import { Md5 } from 'ts-md5';
 
 // 路由示例
 const router = useRouter();
@@ -67,7 +67,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
     if (!formEl) return;
     await formEl.validate((valid) => {
         if (valid) {
-            login({ ...loginForm, password: md5(loginForm.password) }).then((res) => {
+            login({ ...loginForm, password: Md5.hashStr(loginForm.password) }).then((res) => {
                 if (res && res.success) {
                     changeLoginStatus();
                     setLoginUserInfo(res.result);

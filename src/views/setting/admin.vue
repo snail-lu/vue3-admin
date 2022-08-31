@@ -26,7 +26,11 @@
         >
             <el-table-column prop="username" label="用户名" />
             <el-table-column prop="email" label="邮箱" />
-            <el-table-column prop="roleTypeDesc" label="角色" />
+            <el-table-column prop="level" label="角色">
+                <template #default="scope">
+                    <el-tag>{{ levelMap[scope.row.level] }}</el-tag>
+                </template>
+            </el-table-column>
             <el-table-column prop="status" label="状态" width="80px">
                 <template #default="scope">
                     <el-tag :type="scope.row.status === 1 ? 'success' : 'danger'" disable-transitions>{{
@@ -41,10 +45,10 @@
                 </template>
             </el-table-column>
         </el-table>
-        <div class="flex-box flex-h-end">
+        <div class="pager flex-box flex-h-end">
             <el-pagination
                 background
-                layout="total,prev,sizes,pager, next"
+                layout="total, sizes, prev, pager, next"
                 :total="total"
                 @size-change="handleSizeChange"
                 :pageSize="searchForm.pageInfo.pageSize"
@@ -53,12 +57,15 @@
             >
             </el-pagination>
         </div>
+
+        <AddAdmin ref="addForm" title="新增管理员" @confirm="onConfirm" />
     </div>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 import tableSearch from '@/composables/tableSearch';
+import AddAdmin from './components/AddAdmin.vue';
 
 const searchForm = reactive({
     userName: '',
@@ -78,8 +85,10 @@ onMounted(() => {
     onSearch();
 });
 
+const addForm = ref(null);
 // 新增
 const onAdd = () => {
+    addForm.value.show();
     console.log('新增');
 };
 
@@ -91,5 +100,21 @@ const onEdit = (userInfo: Object) => {
 // 删除
 const onDelete = (userInfo: Object) => {
     console.log(userInfo);
+};
+
+// 编辑弹窗确认
+const onConfirm = (confirm: boolean) => {
+    if (confirm) {
+        onSearch();
+    }
+};
+
+// 角色类型map
+type stringKey = Record<string, string>;
+const levelMap: stringKey = {
+    1: '超级管理员',
+    2: '管理员',
+    3: '运营者',
+    4: '开发者'
 };
 </script>

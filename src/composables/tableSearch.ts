@@ -7,14 +7,19 @@ export default function tableSearch({ searchForm, searchUrl }) {
     const total = ref(0);
 
     // 请求列表数据
+    const loading = ref(false);
     const getTableData = async () => {
         try {
+            loading.value = true;
             let res: responseDto = await request({ url: searchUrl, data: searchForm, method: 'POST' });
             if (res && res.result) {
                 tableData.value = res.result.list;
                 total.value = res.result.total;
             }
-        } catch (e) {}
+            loading.value = false;
+        } catch (e) {
+            loading.value = false;
+        }
     };
 
     // 页码修改
@@ -35,6 +40,7 @@ export default function tableSearch({ searchForm, searchUrl }) {
     };
 
     return {
+        loading,
         tableData,
         total,
         onSearch,

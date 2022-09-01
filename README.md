@@ -11,6 +11,10 @@
 
 基于`Vue3` + `TypeScript` + `Element-Plus` 开发的商城管理系统。
 
+## 功能实现
+
+-   权限管理
+
 ## 项目截图
 
 ![](https://s1.ax1x.com/2022/08/29/vfB5jg.png)

@@ -15,7 +15,7 @@
                 <div class="flex-box flex-v-center">
                     Hi,
                     <span class="user-name flex-box flex-v-center">
-                        {{ userInfo.userName || ''
+                        {{ userInfo.username || ''
                         }}<el-icon>
                             <arrow-down />
                         </el-icon>
@@ -34,14 +34,12 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive } from 'vue';
+import { ref, computed } from 'vue';
+import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
-// 只使用组件的api需要手动引入组件，样式已在main.ts中引入
-import { ElMessageBox } from 'element-plus';
 
-const userInfo = reactive({
-    userName: 'admin'
-});
+const store = useStore();
+const userInfo = computed(() => store.state.userInfo);
 
 const isFullScreen = ref(false);
 

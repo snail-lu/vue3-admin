@@ -7,12 +7,11 @@
             <el-form-item label="邮箱" prop="email">
                 <el-input v-model="form.email" class="w-200" />
             </el-form-item>
-            <el-form-item label="管理员等级">
-                <el-select v-model="form.level" class="w-200">
-                    <el-option label="超级管理员" :value="1" />
-                    <el-option label="管理员" :value="2" />
-                    <el-option label="运营者" :value="3" />
-                    <el-option label="开发者" :value="4" />
+            <el-form-item label="角色">
+                <el-select v-model="form.role" class="w-200">
+                    <el-option label="管理员" :value="1" />
+                    <el-option label="运营者" :value="2" />
+                    <el-option label="开发者" :value="3" />
                 </el-select>
             </el-form-item>
             <el-form-item label="启用状态">
@@ -43,7 +42,7 @@ const form = ref({
     username: '',
     email: '',
     password: Md5.hashStr('123456'),
-    level: 3,
+    role: 2,
     status: 1
 });
 const rules = reactive<FormRules>({
@@ -103,7 +102,7 @@ const show = (data: object) => {
             username: '',
             email: '',
             password: Md5.hashStr('123456'),
-            level: 3,
+            role: 2,
             status: 1
         };
     }

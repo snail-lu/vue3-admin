@@ -27,9 +27,9 @@
         >
             <el-table-column prop="username" label="用户名" />
             <el-table-column prop="email" label="邮箱" />
-            <el-table-column prop="level" label="角色">
+            <el-table-column prop="role" label="角色">
                 <template #default="scope">
-                    <el-tag>{{ levelMap[scope.row.level] }}</el-tag>
+                    <el-tag>{{ roleMap[scope.row.role] }}</el-tag>
                 </template>
             </el-table-column>
             <el-table-column prop="status" label="状态" width="100px">
@@ -117,10 +117,9 @@ const onConfirm = (confirm: boolean) => {
 
 // 角色类型map
 type stringKey = Record<string, string>;
-const levelMap: stringKey = {
-    1: '超级管理员',
-    2: '管理员',
-    3: '运营者',
-    4: '开发者'
+const roleMap: stringKey = {
+    1: '管理员',
+    2: '运营者',
+    3: '开发者'
 };
 </script>

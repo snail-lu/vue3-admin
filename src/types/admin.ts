@@ -6,7 +6,7 @@ export interface adminListRequestDto {
 export interface adminUpdateRequestDto {
     username: string;
     email: string;
-    level: number;
+    role: number;
     status: number;
     password: string;
 }

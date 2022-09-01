@@ -2,14 +2,14 @@
     <div class="root">
         <el-form :inline="true" :model="searchForm">
             <el-form-item label="用户名">
-                <el-input v-model="searchForm.userName" clearable size="small"></el-input>
+                <el-input v-model="searchForm.username"></el-input>
             </el-form-item>
             <el-form-item label="邮箱">
-                <el-input v-model="searchForm.email" clearable size="small"></el-input>
+                <el-input v-model="searchForm.email"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button @click="onSearch" type="primary" size="small" icon="Search">查询</el-button>
-                <el-button @click="onAdd" type="primary" size="small" icon="Plus">新增</el-button>
+                <el-button @click="onSearch" type="primary" icon="Search">查询</el-button>
+                <el-button @click="onAdd" type="primary" icon="Plus">新增</el-button>
             </el-form-item>
         </el-form>
         <el-table
@@ -32,14 +32,14 @@
                     <el-tag>{{ levelMap[scope.row.level] }}</el-tag>
                 </template>
             </el-table-column>
-            <el-table-column prop="status" label="状态" width="80px">
+            <el-table-column prop="status" label="状态" width="100px">
                 <template #default="scope">
                     <el-tag :type="scope.row.status === 1 ? 'success' : 'danger'" disable-transitions>{{
                         scope.row.status === 1 ? '启用' : '停用'
                     }}</el-tag>
                 </template>
             </el-table-column>
-            <el-table-column align="center" fixed="right" label="操作" width="100">
+            <el-table-column align="center" fixed="right" label="操作" width="150px">
                 <template #default="scope">
                     <el-button link size="small" @click="onEdit(scope.row)" type="primary">编辑</el-button>
                     <el-popconfirm title="确认删除该管理员?" @confirm="onDelete(scope.row)">
@@ -74,7 +74,7 @@ import AddAdmin from './components/AddAdmin.vue';
 import { deleteAdmin, updateAdmin } from './api/index';
 
 const searchForm = reactive({
-    userName: '',
+    username: '',
     email: '',
     pageInfo: {
         pageNo: 1,

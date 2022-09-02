@@ -7,6 +7,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AppHeader: typeof import('./src/components/layout/AppHeader.vue')['default']
     AppMain: typeof import('./src/components/layout/AppMain.vue')['default']
+    Backup: typeof import('./src/components/Sidebar/backup.vue')['default']
     BarChart: typeof import('./src/components/Chart/BarChart.vue')['default']
     Breadcrumb: typeof import('./src/components/layout/Breadcrumb.vue')['default']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']

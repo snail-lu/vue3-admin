@@ -12,18 +12,13 @@ export const store = createStore({
     state() {
         return {
             userInfo: null,
-            isCollapse: false,
-            isLogined: false
+            isCollapse: false
         };
     },
     mutations: {
         // 修改左侧导航啦折叠状态
         changeCollapse(state: StateDto) {
             state.isCollapse = !state.isCollapse;
-        },
-        // 修改登录状态
-        changeLoginStatus(state: StateDto, { isLogined }) {
-            state.isLogined = isLogined;
         },
         // 存储登录用户信息
         setUserInfo(state: StateDto, { userInfo }) {

@@ -1,20 +1,40 @@
 <template>
-    <Menu :menu="menuList" :collapse="isCollapse" />
+    <el-menu
+        active-text-color="#ffffff"
+        background-color="#01182a"
+        class="sidebar-container"
+        text-color="#fff"
+        :collapse="collapse"
+        :router="true"
+        :default-active="activePath"
+    >
+        <template v-for="item in menu" :key="`${item.path}`">
+            <MenuItem :menu="item" base-path="/" />
+        </template>
+    </el-menu>
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import Menu from './Menu.vue';
+import { computed } from 'vue';
+import MenuItem from './MenuItem.vue';
 
 // 侧边导航折叠/展开控制
 const store = useStore();
-const isCollapse = computed(() => store.state.isCollapse);
+const collapse = computed(() => store.state.isCollapse);
 const router = useRouter();
 
-const menuList = computed(() => {
-    return router.options.routes[0].children;
+// 菜单数据
+const menu = computed(() => {
+    console.log(router.options.routes, 'routes');
+    return router.options.routes;
+});
+
+// 当前激活的菜单
+const route = useRoute();
+const activePath = computed(() => {
+    return route.path;
 });
 </script>
 
@@ -32,5 +52,9 @@ const menuList = computed(() => {
 
 ::-webkit-scrollbar {
     display: none;
+}
+
+:deep(.el-menu-item.is-active) {
+    background-color: rgb(51, 126, 204);
 }
 </style>

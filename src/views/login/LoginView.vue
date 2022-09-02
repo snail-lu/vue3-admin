@@ -55,12 +55,12 @@ const rules = {
     ]
 };
 
-// 登录状态修改
-const store = useStore();
-const changeLoginStatus = () => store.commit('changeLoginStatus', { isLogined: true });
-
 // 登录用户信息保存
+const store = useStore();
 const setLoginUserInfo = (userInfo: object) => store.commit('setUserInfo', { userInfo });
+
+// 生成用户对应的路由数据
+const generateRoleRoutes = () => {};
 
 // 表单提交
 const submitForm = async (formEl: FormInstance | undefined) => {
@@ -69,8 +69,8 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         if (valid) {
             login({ ...loginForm, password: Md5.hashStr(loginForm.password) }).then((res) => {
                 if (res && res.success) {
-                    changeLoginStatus();
                     setLoginUserInfo(res.result);
+                    generateRoleRoutes();
                     ElMessage.success('登录成功~');
                     router.push({ path: '/' });
                 }

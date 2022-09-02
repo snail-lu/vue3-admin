@@ -9,7 +9,7 @@
         :default-active="activePath"
     >
         <template v-for="item in menu" :key="`${item.path}`">
-            <MenuItem :menu="item" base-path="/" />
+            <SideBarItem :menu="item" base-path="" />
         </template>
     </el-menu>
 </template>
@@ -18,7 +18,7 @@
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { computed } from 'vue';
-import MenuItem from './MenuItem.vue';
+import SideBarItem from './SideBarItem.vue';
 
 // 侧边导航折叠/展开控制
 const store = useStore();

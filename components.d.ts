@@ -7,7 +7,6 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AppHeader: typeof import('./src/components/layout/AppHeader.vue')['default']
     AppMain: typeof import('./src/components/layout/AppMain.vue')['default']
-    Backup: typeof import('./src/components/Sidebar/backup.vue')['default']
     BarChart: typeof import('./src/components/Chart/BarChart.vue')['default']
     Breadcrumb: typeof import('./src/components/layout/Breadcrumb.vue')['default']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
@@ -39,12 +38,13 @@ declare module '@vue/runtime-core' {
     ElTag: typeof import('element-plus/es')['ElTag']
     Layout: typeof import('./src/components/layout/index.vue')['default']
     Loading: typeof import('element-plus/es')['ElLoadingDirective']
-    Menu: typeof import('./src/components/Sidebar/Menu.vue')['default']
     MenuItem: typeof import('./src/components/Sidebar/MenuItem.vue')['default']
     PieChart: typeof import('./src/components/Chart/PieChart.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Sidebar: typeof import('./src/components/Sidebar/index.vue')['default']
+    SideBar: typeof import('./src/components/Sidebar/SideBar.vue')['default']
+    SideBarItem: typeof import('./src/components/Sidebar/SideBarItem.vue')['default']
   }
 }
 

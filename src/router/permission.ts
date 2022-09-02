@@ -32,9 +32,9 @@ const adminRoutes = [
             {
                 path: 'add',
                 component: () => import('@/views/pages/add.vue'),
+                hidden: true,
                 meta: {
-                    title: '新增页面',
-                    hidden: true
+                    title: '新增页面'
                 }
             }
         ]
@@ -201,11 +201,11 @@ const adminRoutes = [
     {
         path: '/404',
         component: () => import('../views/NotFound.vue')
-    },
-    {
-        path: '/:pathMatch(.*)*',
-        redirect: '/404'
     }
+    // {
+    //     path: '/:pathMatch(.*)*',
+    //     redirect: '/404'
+    // }
 ];
 
 // 运营者路由

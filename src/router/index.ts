@@ -1,23 +1,21 @@
-import { h, resolveComponent } from 'vue';
 import { createRouter, RouteRecordRaw, createWebHistory } from 'vue-router';
 import { store } from '@/store/index';
-// import { useStore } from 'vuex';
 import Layout from '../components/layout/index.vue';
 import { adminRoutes } from './permission';
 const routes = [
     {
         path: '/',
         component: Layout,
-        redirect: '/home',
+        meta: {
+            title: '首页',
+            icon: 'House'
+        },
         children: [
             {
-                path: 'home',
-                name: 'home',
-                component: () => import('../views/Home.vue'),
-                meta: {
-                    title: '首页',
-                    icon: 'House'
-                }
+                path: '',
+                name: 'Home',
+                hidden: true,
+                component: () => import('@/views/Home.vue')
             }
         ]
     },

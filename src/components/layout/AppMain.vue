@@ -1,7 +1,7 @@
 <template>
     <section class="app-main">
         <router-view v-slot="{ Component }">
-            <transition name="fade-transform" mode="out-in">
+            <transition name="fade" mode="out-in">
                 <component :is="Component" />
             </transition>
         </router-view>
@@ -44,13 +44,14 @@ export default defineComponent({
 .fixed-header + .app-main {
     padding-top: 50px;
 }
-</style>
 
-<style lang="scss">
-// fix css style bug in open el-dialog
-// .el-popup-parent--hidden {
-// 	.fixed-header {
-// 		padding-right: 15px;
-// 	}
-// }
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.25s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
 </style>

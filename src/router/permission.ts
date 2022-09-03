@@ -200,12 +200,14 @@ const adminRoutes = [
     // 404 页面必须放路由的最后
     {
         path: '/404',
-        component: () => import('../views/NotFound.vue')
+        component: () => import('../views/NotFound.vue'),
+        hidden: true
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        redirect: '/404',
+        hidden: true
     }
-    // {
-    //     path: '/:pathMatch(.*)*',
-    //     redirect: '/404'
-    // }
 ];
 
 // 运营者路由

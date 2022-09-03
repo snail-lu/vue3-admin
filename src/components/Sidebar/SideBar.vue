@@ -1,7 +1,7 @@
 <template>
     <el-menu
         active-text-color="#ffffff"
-        background-color="#01182a"
+        background-color="#011825"
         class="sidebar-container"
         text-color="#fff"
         :collapse="collapse"
@@ -52,6 +52,10 @@ const activePath = computed(() => {
 
 ::-webkit-scrollbar {
     display: none;
+}
+
+:deep(.el-sub-menu .el-menu-item) {
+    background-color: #00080c;
 }
 
 :deep(.el-menu-item.is-active) {

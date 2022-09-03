@@ -71,7 +71,7 @@
 import { onMounted, reactive, ref } from 'vue';
 import tableSearch from '@/composables/tableSearch';
 import AddAdmin from './components/AddAdmin.vue';
-import { deleteAdmin, updateAdmin } from './api/index';
+import { deleteAdmin } from '@/api/setting';
 
 const searchForm = reactive({
     username: '',

@@ -1,4 +1,4 @@
-import request from '../../../request/index';
+import request from '@/utils/request';
 import { goodsListRequestDto } from '../../../types/goods';
 
 export function getGoodsList(data: goodsListRequestDto) {

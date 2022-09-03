@@ -8,6 +8,7 @@ import 'element-plus/es/components/message-box/style/css';
 import '@/styles/index.scss'; // global css
 
 const app = createApp(App);
+// 注册所有el-icons图标
 for (const name in ElIcons) {
     app.component(name, (ElIcons as any)[name]);
 }

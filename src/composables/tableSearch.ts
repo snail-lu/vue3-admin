@@ -1,5 +1,5 @@
 import { ref } from 'vue';
-import request from '@/request/index';
+import request from '@/utils/request';
 import { responseDto } from '@/types/request';
 
 export default function tableSearch({ searchForm, searchUrl }) {

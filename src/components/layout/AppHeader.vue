@@ -15,7 +15,7 @@
                 <div class="flex-box flex-v-center">
                     Hi,
                     <span class="user-name flex-box flex-v-center">
-                        {{ userInfo.username || ''
+                        {{ userInfo?.username || ''
                         }}<el-icon>
                             <arrow-down />
                         </el-icon>
@@ -24,8 +24,8 @@
 
                 <template #dropdown>
                     <el-dropdown-menu>
-                        <el-dropdown-item command="logout">退出登录</el-dropdown-item>
                         <el-dropdown-item command="github">项目仓库</el-dropdown-item>
+                        <el-dropdown-item command="logout">退出登录</el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
             </el-dropdown>
@@ -40,6 +40,11 @@ import { useRouter } from 'vue-router';
 
 const store = useStore();
 const userInfo = computed(() => store.state.userInfo);
+
+const clearUserInfo = () => {
+    store.commit('setRoleRoutes', { roleRoutes: [] });
+    store.commit('setUserInfo', { userInfo: null });
+};
 
 const isFullScreen = ref(false);
 
@@ -80,8 +85,8 @@ function logout() {
         type: 'warning'
     }).then(
         () => {
-            // 清空本地缓存，并重定向到登录页
-            localStorage.clear();
+            // 清空缓存数据，并重定向到登录页
+            clearUserInfo();
             router.replace('/login');
         },
         () => {}

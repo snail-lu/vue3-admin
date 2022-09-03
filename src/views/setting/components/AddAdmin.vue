@@ -34,7 +34,7 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
 import { Md5 } from 'ts-md5';
-import { addAdmin, updateAdmin } from '../api/index';
+import { addAdmin, updateAdmin } from '@/api/setting';
 import type { FormInstance, FormRules } from 'element-plus';
 
 const formRef = ref<FormInstance>();

@@ -31,7 +31,7 @@ import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { FormInstance, ElMessage } from 'element-plus';
 import { LoginFormDto } from '../../types/login';
-import { login } from './api/index';
+import { login } from '@/api/user';
 import { Md5 } from 'ts-md5';
 
 // 路由示例
@@ -59,9 +59,6 @@ const rules = {
 const store = useStore();
 const setLoginUserInfo = (userInfo: object) => store.commit('setUserInfo', { userInfo });
 
-// 生成用户对应的路由数据
-const generateRoleRoutes = () => {};
-
 // 表单提交
 const submitForm = async (formEl: FormInstance | undefined) => {
     if (!formEl) return;
@@ -70,7 +67,6 @@ const submitForm = async (formEl: FormInstance | undefined) => {
             login({ ...loginForm, password: Md5.hashStr(loginForm.password) }).then((res) => {
                 if (res && res.success) {
                     setLoginUserInfo(res.result);
-                    generateRoleRoutes();
                     ElMessage.success('登录成功~');
                     router.push({ path: '/' });
                 }

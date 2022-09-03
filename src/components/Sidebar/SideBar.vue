@@ -15,20 +15,17 @@
 </template>
 
 <script lang="ts" setup>
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 import { computed } from 'vue';
 import SideBarItem from './SideBarItem.vue';
+import { baseRoutes } from '@/router/permission';
 
 // 侧边导航折叠/展开控制
 const store = useStore();
 const collapse = computed(() => store.state.isCollapse);
-const router = useRouter();
-
-// 菜单数据
 const menu = computed(() => {
-    console.log(router.options.routes, 'routes');
-    return router.options.routes;
+    return baseRoutes.concat(store.state.roleRoutes);
 });
 
 // 当前激活的菜单

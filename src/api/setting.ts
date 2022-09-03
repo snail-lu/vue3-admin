@@ -1,4 +1,4 @@
-import request from '@/request/index';
+import request from '@/utils/request';
 import { adminListRequestDto, adminUpdateRequestDto } from '@/types/admin';
 
 const urls = {

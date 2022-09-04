@@ -2,7 +2,12 @@
 import { RouteRecordRaw } from 'vue-router';
 import Layout from '@/components/layout/index.vue';
 
-// 基础路由，所有用户可访问
+/**
+ * 基础路由 | 所有用户可访问的路由
+ * 这些路由是路由实例创建时添加的路由
+ * component - 组件或import的懒加载组件
+ * hidden - 是否在菜单栏显示
+ */
 const baseRoutes = [
     {
         path: '/',
@@ -28,8 +33,12 @@ const baseRoutes = [
     }
 ];
 
-// 这里的路由模拟了从后端接口中获取路由数据
-// 管理员路由
+/**
+ * 管理员路由 | 管理员可访问的路由列表
+ * 为了便于后期将路由数据放在后台维护，component属性为组件或组件路径字符串
+ * 在动态添加路由的时候，需要根据component获取实际的路由组件
+ */
+
 const adminRoutes = [
     {
         path: '/permission',
@@ -51,9 +60,6 @@ const adminRoutes = [
     },
     {
         path: '/page',
-        // component: {
-        //     render: () => h(resolveComponent('router-view'))
-        // },
         component: 'Layout',
         meta: {
             title: '页面装修',
@@ -244,11 +250,16 @@ const adminRoutes = [
     }
 ];
 
-// 运营者路由
-const operatorRoutes: Array<RouteRecordRaw> = [
+/**
+ * 运营者路由 | 运营人员可访问的路由列表
+ * 为了便于后期将路由数据放在后台维护，component属性为组件或组件路径字符串
+ * 在动态添加路由的时候，需要根据component获取实际的路由组件
+ */
+
+const operatorRoutes = [
     {
         path: '/permission',
-        component: Layout,
+        component: 'Layout',
         meta: {
             title: '权限页面',
             icon: 'Lock'
@@ -256,7 +267,8 @@ const operatorRoutes: Array<RouteRecordRaw> = [
         children: [
             {
                 path: 'operator',
-                component: () => import('@/views/permission/Operator.vue'),
+                name: 'PermissionOperator',
+                component: '../views/permission/Operator.vue',
                 meta: {
                     title: '运营者专属页面'
                 }
@@ -265,10 +277,7 @@ const operatorRoutes: Array<RouteRecordRaw> = [
     },
     {
         path: '/page',
-        // component: {
-        //     render: () => h(resolveComponent('router-view'))
-        // },
-        component: Layout,
+        component: 'Layout',
         meta: {
             title: '页面装修',
             icon: 'Document'
@@ -276,21 +285,21 @@ const operatorRoutes: Array<RouteRecordRaw> = [
         children: [
             {
                 path: 'list',
-                component: () => import('@/views/pages/index.vue'),
+                component: '../views/pages/index.vue',
                 meta: {
                     title: '页面列表'
                 }
             },
             {
                 path: 'component-lib',
-                component: () => import('@/views/pages/lib.vue'),
+                component: '../views/pages/lib.vue',
                 meta: {
                     title: '组件库'
                 }
             },
             {
                 path: 'add',
-                component: () => import('@/views/pages/add.vue'),
+                component: '../views/pages/add.vue',
                 hidden: true,
                 meta: {
                     title: '新增页面'
@@ -300,7 +309,7 @@ const operatorRoutes: Array<RouteRecordRaw> = [
     },
     {
         path: '/goods',
-        component: Layout,
+        component: 'Layout',
         meta: {
             title: '商品管理',
             icon: 'Goods'
@@ -308,28 +317,28 @@ const operatorRoutes: Array<RouteRecordRaw> = [
         children: [
             {
                 path: 'list',
-                component: () => import('@/views/goods/index.vue'),
+                component: '../views/goods/index.vue',
                 meta: {
                     title: '商品列表'
                 }
             },
             {
                 path: 'category',
-                component: () => import('@/views/goods/category.vue'),
+                component: '../views/goods/category.vue',
                 meta: {
                     title: '商品分类'
                 }
             },
             {
                 path: 'inventory',
-                component: () => import('@/views/goods/inventory.vue'),
+                component: '../views/goods/inventory.vue',
                 meta: {
                     title: '库存列表'
                 }
             },
             {
                 path: 'comments',
-                component: () => import('@/views/goods/comments.vue'),
+                component: '../views/goods/comments.vue',
                 meta: {
                     title: '评论列表'
                 }
@@ -338,7 +347,7 @@ const operatorRoutes: Array<RouteRecordRaw> = [
     },
     {
         path: '/order',
-        component: Layout,
+        component: 'Layout',
         meta: {
             title: '订单管理',
             icon: 'SoldOut'
@@ -346,14 +355,14 @@ const operatorRoutes: Array<RouteRecordRaw> = [
         children: [
             {
                 path: 'list',
-                component: () => import('@/views/order/index.vue'),
+                component: '@/views/order/index.vue',
                 meta: {
                     title: '订单列表'
                 }
             },
             {
                 path: 'refund',
-                component: () => import('@/views/order/refund.vue'),
+                component: '../views/order/refund.vue',
                 meta: {
                     title: '售后列表'
                 }
@@ -362,7 +371,7 @@ const operatorRoutes: Array<RouteRecordRaw> = [
     },
     {
         path: '/member',
-        component: Layout,
+        component: 'Layout',
         meta: {
             title: '会员管理',
             icon: 'User'
@@ -370,7 +379,7 @@ const operatorRoutes: Array<RouteRecordRaw> = [
         children: [
             {
                 path: 'list',
-                component: () => import('@/views/member/index.vue'),
+                component: '../views/member/index.vue',
                 meta: {
                     title: '会员列表'
                 }
@@ -379,7 +388,7 @@ const operatorRoutes: Array<RouteRecordRaw> = [
     },
     {
         path: '/activity',
-        component: Layout,
+        component: 'Layout',
         meta: {
             title: '活动管理',
             icon: 'Calendar'
@@ -387,21 +396,21 @@ const operatorRoutes: Array<RouteRecordRaw> = [
         children: [
             {
                 path: 'list',
-                component: () => import('@/views/activity/index.vue'),
+                component: '../views/activity/index.vue',
                 meta: {
                     title: '活动列表'
                 }
             },
             {
                 path: 'calendar',
-                component: () => import('@/views/activity/calendar.vue'),
+                component: '../views/activity/calendar.vue',
                 meta: {
                     title: '活动日历'
                 }
             },
             {
                 path: 'coupon',
-                component: () => import('@/views/activity/coupon.vue'),
+                component: '../views/activity/coupon.vue',
                 meta: {
                     title: '优惠券'
                 }
@@ -410,7 +419,7 @@ const operatorRoutes: Array<RouteRecordRaw> = [
     },
     {
         path: '/shop',
-        component: Layout,
+        component: 'Layout',
         meta: {
             title: '门店管理',
             icon: 'shop'
@@ -418,14 +427,14 @@ const operatorRoutes: Array<RouteRecordRaw> = [
         children: [
             {
                 path: 'list',
-                component: () => import('@/views/shop/index.vue'),
+                component: '../views/shop/index.vue',
                 meta: {
                     title: '门店列表'
                 }
             },
             {
                 path: 'guide',
-                component: () => import('@/views/shop/guide.vue'),
+                component: '../views/shop/guide.vue',
                 meta: {
                     title: '导购列表'
                 }
@@ -434,7 +443,7 @@ const operatorRoutes: Array<RouteRecordRaw> = [
     },
     {
         path: '/setting',
-        component: Layout,
+        component: 'Layout',
         meta: {
             title: '系统设置',
             icon: 'setting'
@@ -442,14 +451,14 @@ const operatorRoutes: Array<RouteRecordRaw> = [
         children: [
             {
                 path: 'freight',
-                component: () => import('@/views/setting/freight.vue'),
+                component: '../views/setting/freight.vue',
                 meta: {
                     title: '运费设置'
                 }
             },
             {
                 path: 'admin',
-                component: () => import('@/views/setting/admin.vue'),
+                component: '../views/setting/admin.vue',
                 meta: {
                     title: '管理员管理'
                 }
@@ -458,11 +467,16 @@ const operatorRoutes: Array<RouteRecordRaw> = [
     }
 ];
 
-// 开发者路由
-const developerRoutes: Array<RouteRecordRaw> = [
+/**
+ * 开发者路由 | 开发者可访问的路由列表
+ * 为了便于后期将路由数据放在后台维护，component属性为组件或组件路径字符串
+ * 在动态添加路由的时候，需要根据component获取实际的路由组件
+ */
+
+const developerRoutes = [
     {
         path: '/permission',
-        component: Layout,
+        component: 'Layout',
         meta: {
             title: '权限页面',
             icon: 'Lock'
@@ -470,7 +484,8 @@ const developerRoutes: Array<RouteRecordRaw> = [
         children: [
             {
                 path: 'developer',
-                component: () => import('@/views/permission/Developer.vue'),
+                name: 'PermissionDeveloper',
+                component: '../views/permission/Developer.vue',
                 meta: {
                     title: '开发者专属页面'
                 }
@@ -479,10 +494,7 @@ const developerRoutes: Array<RouteRecordRaw> = [
     },
     {
         path: '/page',
-        // component: {
-        //     render: () => h(resolveComponent('router-view'))
-        // },
-        component: Layout,
+        component: 'Layout',
         meta: {
             title: '页面装修',
             icon: 'Document'
@@ -490,21 +502,21 @@ const developerRoutes: Array<RouteRecordRaw> = [
         children: [
             {
                 path: 'list',
-                component: () => import('@/views/pages/index.vue'),
+                component: '../views/pages/index.vue',
                 meta: {
                     title: '页面列表'
                 }
             },
             {
                 path: 'component-lib',
-                component: () => import('@/views/pages/lib.vue'),
+                component: '../views/pages/lib.vue',
                 meta: {
                     title: '组件库'
                 }
             },
             {
                 path: 'add',
-                component: () => import('@/views/pages/add.vue'),
+                component: '../views/pages/add.vue',
                 hidden: true,
                 meta: {
                     title: '新增页面'
@@ -514,7 +526,7 @@ const developerRoutes: Array<RouteRecordRaw> = [
     },
     {
         path: '/goods',
-        component: Layout,
+        component: 'Layout',
         meta: {
             title: '商品管理',
             icon: 'Goods'
@@ -522,28 +534,28 @@ const developerRoutes: Array<RouteRecordRaw> = [
         children: [
             {
                 path: 'list',
-                component: () => import('@/views/goods/index.vue'),
+                component: '../views/goods/index.vue',
                 meta: {
                     title: '商品列表'
                 }
             },
             {
                 path: 'category',
-                component: () => import('@/views/goods/category.vue'),
+                component: '../views/goods/category.vue',
                 meta: {
                     title: '商品分类'
                 }
             },
             {
                 path: 'inventory',
-                component: () => import('@/views/goods/inventory.vue'),
+                component: '../views/goods/inventory.vue',
                 meta: {
                     title: '库存列表'
                 }
             },
             {
                 path: 'comments',
-                component: () => import('@/views/goods/comments.vue'),
+                component: '../views/goods/comments.vue',
                 meta: {
                     title: '评论列表'
                 }
@@ -552,7 +564,7 @@ const developerRoutes: Array<RouteRecordRaw> = [
     },
     {
         path: '/order',
-        component: Layout,
+        component: 'Layout',
         meta: {
             title: '订单管理',
             icon: 'SoldOut'
@@ -560,14 +572,14 @@ const developerRoutes: Array<RouteRecordRaw> = [
         children: [
             {
                 path: 'list',
-                component: () => import('@/views/order/index.vue'),
+                component: '@/views/order/index.vue',
                 meta: {
                     title: '订单列表'
                 }
             },
             {
                 path: 'refund',
-                component: () => import('@/views/order/refund.vue'),
+                component: '../views/order/refund.vue',
                 meta: {
                     title: '售后列表'
                 }
@@ -576,7 +588,7 @@ const developerRoutes: Array<RouteRecordRaw> = [
     },
     {
         path: '/member',
-        component: Layout,
+        component: 'Layout',
         meta: {
             title: '会员管理',
             icon: 'User'
@@ -584,7 +596,7 @@ const developerRoutes: Array<RouteRecordRaw> = [
         children: [
             {
                 path: 'list',
-                component: () => import('@/views/member/index.vue'),
+                component: '../views/member/index.vue',
                 meta: {
                     title: '会员列表'
                 }
@@ -593,7 +605,7 @@ const developerRoutes: Array<RouteRecordRaw> = [
     },
     {
         path: '/activity',
-        component: Layout,
+        component: 'Layout',
         meta: {
             title: '活动管理',
             icon: 'Calendar'
@@ -601,21 +613,21 @@ const developerRoutes: Array<RouteRecordRaw> = [
         children: [
             {
                 path: 'list',
-                component: () => import('@/views/activity/index.vue'),
+                component: '../views/activity/index.vue',
                 meta: {
                     title: '活动列表'
                 }
             },
             {
                 path: 'calendar',
-                component: () => import('@/views/activity/calendar.vue'),
+                component: '../views/activity/calendar.vue',
                 meta: {
                     title: '活动日历'
                 }
             },
             {
                 path: 'coupon',
-                component: () => import('@/views/activity/coupon.vue'),
+                component: '../views/activity/coupon.vue',
                 meta: {
                     title: '优惠券'
                 }
@@ -624,7 +636,7 @@ const developerRoutes: Array<RouteRecordRaw> = [
     },
     {
         path: '/shop',
-        component: Layout,
+        component: 'Layout',
         meta: {
             title: '门店管理',
             icon: 'shop'
@@ -632,14 +644,14 @@ const developerRoutes: Array<RouteRecordRaw> = [
         children: [
             {
                 path: 'list',
-                component: () => import('@/views/shop/index.vue'),
+                component: '../views/shop/index.vue',
                 meta: {
                     title: '门店列表'
                 }
             },
             {
                 path: 'guide',
-                component: () => import('@/views/shop/guide.vue'),
+                component: '../views/shop/guide.vue',
                 meta: {
                     title: '导购列表'
                 }
@@ -648,7 +660,7 @@ const developerRoutes: Array<RouteRecordRaw> = [
     },
     {
         path: '/setting',
-        component: Layout,
+        component: 'Layout',
         meta: {
             title: '系统设置',
             icon: 'setting'
@@ -656,14 +668,14 @@ const developerRoutes: Array<RouteRecordRaw> = [
         children: [
             {
                 path: 'freight',
-                component: () => import('@/views/setting/freight.vue'),
+                component: '../views/setting/freight.vue',
                 meta: {
                     title: '运费设置'
                 }
             },
             {
                 path: 'admin',
-                component: () => import('@/views/setting/admin.vue'),
+                component: '../views/setting/admin.vue',
                 meta: {
                     title: '管理员管理'
                 }
@@ -672,7 +684,10 @@ const developerRoutes: Array<RouteRecordRaw> = [
     }
 ];
 
-// 错误捕获路由
+/**
+ * 错误捕获路由
+ * 错误捕获路由需要跟在角色路由的最后一起动态添加
+ */
 const errorRoutes = [
     // 404 页面必须放路由的最后
     {

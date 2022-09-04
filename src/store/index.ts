@@ -40,15 +40,17 @@ export const store = createStore({
             // 深拷贝路由数据，避免transform过程污染component属性
             const asyncRoutes = _.cloneDeep([...roleRoutes, ...errorRoutes]);
             transformRoutes(asyncRoutes);
-            console.log(asyncRoutes, 'asyncRoutes');
             asyncRoutes.forEach((routeItem) => {
                 router.addRoute(routeItem);
             });
 
             // 将动态添加路由标志置为空，避免重复动态添加路由
             state.addRoleRoutes = false;
-
-            console.log(router.getRoutes(), 'all routes');
+        },
+        // 清空用户路由
+        clearRoutes(state: StateDto) {
+            state.roleRoutes = [];
+            state.addRoleRoutes = true;
         }
     },
     actions: {
@@ -58,7 +60,7 @@ export const store = createStore({
             if (roleRoutes.length > 0) {
                 context.commit('addRoutes', { roleRoutes });
             } else {
-                roleRoutes = await getRoleRoutes();
+                roleRoutes = await getRoleRoutes(context.state.userInfo.role);
                 context.commit('addRoutes', { roleRoutes });
             }
         }

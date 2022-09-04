@@ -14,7 +14,7 @@
 
     <!-- 不存在子菜单 -->
     <el-menu-item :index="routePath" v-else-if="!menu.hidden">
-        <el-icon v-show="menu.meta?.icon">
+        <el-icon v-if="menu.meta?.icon">
             <component :is="menu.meta?.icon ? menu.meta.icon : ''"></component>
         </el-icon>
         <span>{{ menu.meta?.title }}</span>

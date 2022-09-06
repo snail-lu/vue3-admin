@@ -5,8 +5,14 @@
                 <el-input v-model="searchForm.pageName" clearable placeholder="页面名称" />
             </el-form-item>
             <el-form-item label="创建日期:" prop="createTime">
-                <el-date-picker v-model="createTime" type="daterange" range-separator="至" start-placeholder="开始日期"
-                    value-format="YYYY-MM-DD" end-placeholder="结束日期">
+                <el-date-picker
+                    v-model="createTime"
+                    type="daterange"
+                    range-separator="至"
+                    start-placeholder="开始日期"
+                    value-format="YYYY-MM-DD"
+                    end-placeholder="结束日期"
+                >
                 </el-date-picker>
             </el-form-item>
             <el-form-item class="btn-box">
@@ -14,13 +20,22 @@
                 <el-button type="primary" icon="plus" @click="onAdd">新增</el-button>
             </el-form-item>
         </el-form>
-        <el-table :data="tableData" stripe border :header-cell-style="{ color: '#888', textAlign: 'center' }"
-            :cell-style="{ textAlign: 'center' }">
+        <el-table
+            :data="tableData"
+            stripe
+            border
+            :header-cell-style="{ color: '#888', textAlign: 'center' }"
+            :cell-style="{ textAlign: 'center' }"
+        >
             <el-table-column prop="pageName" label="页面名称" />
             <el-table-column prop="status" label="状态">
                 <template #default="scope">
-                    <el-switch :value="scope.row.status" @change="onChangeStatus(scope.row.id)" :active-value="1"
-                        :inactive-value="0">
+                    <el-switch
+                        :value="scope.row.status"
+                        @change="onChangeStatus(scope.row.id)"
+                        :active-value="1"
+                        :inactive-value="0"
+                    >
                     </el-switch>
                 </template>
             </el-table-column>
@@ -36,10 +51,16 @@
             </el-table-column>
         </el-table>
         <div class="pager flex-box flex-h-end">
-            <el-pagination background layout="total, sizes, prev, pager, next" :total="total"
-                :page-sizes="[10, 20, 50, 100]" :page-size="searchForm.pageInfo.pageSize"
-                :current-page="searchForm.pageInfo.pageNo" @current-change="handlePageChange"
-                @size-change="handleSizeChange" />
+            <el-pagination
+                background
+                layout="total, sizes, prev, pager, next"
+                :total="total"
+                @size-change="handleSizeChange"
+                :pageSize="searchForm.pageInfo.pageSize"
+                :currentPage="searchForm.pageInfo.pageNo"
+                @current-change="handlePageChange"
+            >
+            </el-pagination>
         </div>
     </div>
 </template>
@@ -49,14 +70,14 @@ import tableSearch from '@/composables/tableSearch';
 import { useRouter } from 'vue-router';
 
 // 页面跳转
-const router = useRouter()
+const router = useRouter();
 const onAdd = () => {
-    router.push('/page/add')
+    router.push('/page/add');
 };
 
 const onEdit = (id: string) => {
-    router.push({ path: '/page/edit', query: { id } })
-}
+    router.push({ path: '/page/edit', query: { id } });
+};
 
 // 查询表单
 const searchForm = reactive({
@@ -71,26 +92,26 @@ const searchForm = reactive({
 
 const { tableData, total, onSearch, handlePageChange, handleSizeChange } = tableSearch({
     searchForm,
-    searchUrl: '/admin/list'
+    searchUrl: '/page/list'
 });
 
 // 创建时间监听
-const createTime = ref(null)
+const createTime = ref(null);
 watch(createTime, (newValue) => {
     if (newValue) {
-        searchForm.createTimeStart = newValue[0]
-        searchForm.createTimeEnd = newValue[1]
+        searchForm.createTimeStart = newValue[0];
+        searchForm.createTimeEnd = newValue[1];
     } else {
-        searchForm.createTimeStart = ''
-        searchForm.createTimeEnd = ''
+        searchForm.createTimeStart = '';
+        searchForm.createTimeEnd = '';
     }
-})
+});
 
 const onChangeStatus = (id: string) => {
-    console.log(id)
-}
+    console.log(id);
+};
 
 const onPreview = (id: string) => {
-    console.log(id)
-}
+    console.log(id);
+};
 </script>

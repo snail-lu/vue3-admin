@@ -138,7 +138,7 @@ const adminRoutes = [
         children: [
             {
                 path: 'list',
-                component: '@/views/order/index.vue',
+                component: '../views/order/index.vue',
                 meta: {
                     title: '订单列表'
                 }
@@ -355,7 +355,7 @@ const operatorRoutes = [
         children: [
             {
                 path: 'list',
-                component: '@/views/order/index.vue',
+                component: '../views/order/index.vue',
                 meta: {
                     title: '订单列表'
                 }
@@ -572,7 +572,7 @@ const developerRoutes = [
         children: [
             {
                 path: 'list',
-                component: '@/views/order/index.vue',
+                component: '../views/order/index.vue',
                 meta: {
                     title: '订单列表'
                 }

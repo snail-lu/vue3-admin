@@ -1,0 +1,2 @@
+gitee pages部署必须文件，
+gitee检测到该本文件会自动改变nginx配置，解决history路由刷新问题

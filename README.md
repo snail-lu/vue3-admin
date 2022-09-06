@@ -1,6 +1,6 @@
 <h2 align="center">商城管理系统</h2>
 <p align="center">
-    <a href="https://mall-management.vercel.app" target="_blank">线上地址</a>
+    <a href="https://snaillu.gitee.io/mall-management/" target="_blank">线上地址</a>
     ·
     <a href="https://github.com/Snail-Lu/vue3-ts-admin" target="_blank">仓库地址</a>
     ·

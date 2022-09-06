@@ -6,7 +6,9 @@
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
-        "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src"
+        "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
+        "predeploy": "vite build",
+        "deploy": "gh-pages -d dist -t"
     },
     "dependencies": {
         "@element-plus/icons-vue": "^1.1.4",
@@ -31,6 +33,7 @@
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-prettier": "^4.0.0",
         "eslint-plugin-vue": "^8.0.3",
+        "gh-pages": "^4.0.0",
         "prettier": "^2.4.1",
         "sass": "^1.32.7",
         "typescript": "~4.5.5",

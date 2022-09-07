@@ -1,52 +1,42 @@
 <template>
     <div class="root">
-        <el-form ref="searchForm" :inline="true" :model="searchForm" label-position="right">
-            <el-form-item label="页面名称:" prop="pageName">
-                <el-input v-model="searchForm.pageName" clearable placeholder="页面名称" />
+        <el-form :inline="true" :model="searchForm">
+            <el-form-item label="页面名称：">
+                <el-input v-model="searchForm.pageName"></el-input>
             </el-form-item>
-            <el-form-item label="创建日期:" prop="createTime">
-                <el-date-picker
-                    v-model="createTime"
-                    type="daterange"
-                    range-separator="至"
-                    start-placeholder="开始日期"
-                    value-format="YYYY-MM-DD"
-                    end-placeholder="结束日期"
-                >
-                </el-date-picker>
-            </el-form-item>
-            <el-form-item class="btn-box">
-                <el-button type="primary" icon="search" @click="onSearch">查询</el-button>
-                <el-button type="primary" icon="plus" @click="onAdd">新增</el-button>
+            <el-form-item>
+                <el-button @click="onSearch" type="primary" icon="Search">查询</el-button>
+                <el-button @click="onAdd" type="primary" icon="Plus">新增</el-button>
             </el-form-item>
         </el-form>
         <el-table
             :data="tableData"
+            v-loading="loading"
             stripe
+            style="width: 100%"
+            :cell-style="{ 'text-align': 'center' }"
+            :header-cell-style="{
+                background: '#F5F7FA',
+                color: '#606266',
+                textAlign: 'center'
+            }"
             border
-            :header-cell-style="{ color: '#888', textAlign: 'center' }"
-            :cell-style="{ textAlign: 'center' }"
         >
             <el-table-column prop="pageName" label="页面名称" />
-            <el-table-column prop="status" label="状态">
-                <template #default="scope">
-                    <el-switch
-                        :value="scope.row.status"
-                        @change="onChangeStatus(scope.row.id)"
-                        :active-value="1"
-                        :inactive-value="0"
-                    >
-                    </el-switch>
-                </template>
-            </el-table-column>
             <el-table-column prop="createUserName" label="创建人" />
             <el-table-column prop="createTime" label="创建时间" />
-            <el-table-column prop="updateUserName" label="修改人" />
-            <el-table-column prop="updateTime" label="修改时间" />
-            <el-table-column label="操作">
-                <template slot-scope="scope">
-                    <el-button type="text" size="small" @click="onEdit(scope.row.id)">编辑</el-button>
-                    <el-button type="text" size="small" @click="onPreview(scope.row.id)">预览</el-button>
+            <el-table-column prop="pageName" label="页面编码" />
+            <el-table-column prop="status" label="状态" width="100px">
+                <template #default="scope">
+                    <el-tag :type="scope.row.status === 1 ? 'success' : 'danger'" disable-transitions>{{
+                        scope.row.status === 1 ? '启用' : '停用'
+                    }}</el-tag>
+                </template>
+            </el-table-column>
+            <el-table-column align="center" fixed="right" label="操作" width="150px">
+                <template #default="scope">
+                    <el-button link size="small" @click="onEdit(scope.row)" type="primary">编辑</el-button>
+                    <el-button link size="small" @click="onEdit(scope.row)" type="primary">预览</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -56,62 +46,59 @@
                 layout="total, sizes, prev, pager, next"
                 :total="total"
                 @size-change="handleSizeChange"
-                :pageSize="searchForm.pageInfo.pageSize"
-                :currentPage="searchForm.pageInfo.pageNo"
+                v-model:currentPage="searchForm.pageInfo.pageNo"
+                v-model:page-size="searchForm.pageInfo.pageSize"
                 @current-change="handlePageChange"
             >
             </el-pagination>
         </div>
     </div>
 </template>
-<script setup lang="ts">
-import { reactive, ref, watch } from 'vue';
+
+<script lang="ts" setup>
+import { onMounted, reactive, ref } from 'vue';
 import tableSearch from '@/composables/tableSearch';
-import { useRouter } from 'vue-router';
+import { ElMessage } from 'element-plus';
 
-// 页面跳转
-const router = useRouter();
-const onAdd = () => {
-    router.push('/page/add');
-};
-
-const onEdit = (id: string) => {
-    router.push({ path: '/page/edit', query: { id } });
-};
-
-// 查询表单
 const searchForm = reactive({
-    pageName: '', // 名称
-    createTimeStart: '', // 创建时间起始值
-    createTimeEnd: '', // 创建时间结束值
+    pageName: '',
     pageInfo: {
         pageNo: 1,
         pageSize: 10
     }
 });
 
-const { tableData, total, onSearch, handlePageChange, handleSizeChange } = tableSearch({
+const { tableData, total, handlePageChange, handleSizeChange, onSearch, loading } = tableSearch({
     searchForm,
     searchUrl: '/page/list'
 });
 
-// 创建时间监听
-const createTime = ref(null);
-watch(createTime, (newValue) => {
-    if (newValue) {
-        searchForm.createTimeStart = newValue[0];
-        searchForm.createTimeEnd = newValue[1];
-    } else {
-        searchForm.createTimeStart = '';
-        searchForm.createTimeEnd = '';
-    }
+onMounted(() => {
+    onSearch();
 });
 
-const onChangeStatus = (id: string) => {
-    console.log(id);
+const addForm = ref();
+// 新增
+const onAdd = () => {
+    // addForm.value.show();
+    ElMessage('开发中~');
 };
 
-const onPreview = (id: string) => {
-    console.log(id);
+// 编辑
+const onEdit = (userInfo: Object) => {
+    ElMessage('开发中~');
+};
+
+// 删除
+const onDelete = async (userInfo: { id: string }) => {
+    // await deleteAdmin({ id: userInfo.id });
+    onSearch();
+};
+
+// 编辑弹窗确认
+const onConfirm = (confirm: boolean) => {
+    if (confirm) {
+        onSearch();
+    }
 };
 </script>

@@ -56,8 +56,8 @@
                 layout="total, sizes, prev, pager, next"
                 :total="total"
                 @size-change="handleSizeChange"
-                :pageSize="searchForm.pageInfo.pageSize"
-                :currentPage="searchForm.pageInfo.pageNo"
+                v-model:currentPage="searchForm.pageInfo.pageNo"
+                v-model:page-size="searchForm.pageInfo.pageSize"
                 @current-change="handlePageChange"
             >
             </el-pagination>

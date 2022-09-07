@@ -28,6 +28,7 @@
                     <!-- <el-button class="reset-btn" @click="resetForm(loginFormRef)">重置</el-button> -->
                 </el-form-item>
             </el-form>
+            <div class="tips">提示：由于接口服务部署在HEROKU上，出现Network Error后多试几次即可。</div>
         </div>
     </div>
 </template>
@@ -129,6 +130,12 @@ const resetForm = (formEl: FormInstance | undefined) => {
             margin-left: 0;
             margin-top: 10px;
         }
+    }
+
+    .tips {
+        width: 260px;
+        font-size: 12px;
+        color: #666;
     }
 }
 </style>

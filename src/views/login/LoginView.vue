@@ -18,7 +18,13 @@
                     </el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" class="login-btn" @click="submitForm(loginFormRef)">登录</el-button>
+                    <el-button
+                        type="primary"
+                        class="login-btn"
+                        @click="submitForm(loginFormRef)"
+                        :disabled="submiting"
+                        >{{ submiting ? '登录中...' : '登录' }}</el-button
+                    >
                     <!-- <el-button class="reset-btn" @click="resetForm(loginFormRef)">重置</el-button> -->
                 </el-form-item>
             </el-form>
@@ -59,18 +65,26 @@ const rules = {
 const store = useStore();
 const setLoginUserInfo = (userInfo: object) => store.commit('setUserInfo', { userInfo });
 
+let submiting = ref(false);
 // 表单提交
 const submitForm = async (formEl: FormInstance | undefined) => {
     if (!formEl) return;
+    submiting.value = true;
     await formEl.validate((valid) => {
         if (valid) {
-            login({ ...loginForm, password: Md5.hashStr(loginForm.password) }).then((res) => {
-                if (res && res.success) {
-                    setLoginUserInfo(res.result);
-                    ElMessage.success('登录成功~');
-                    router.push({ path: '/' });
+            login({ ...loginForm, password: Md5.hashStr(loginForm.password) }).then(
+                (res) => {
+                    if (res && res.success) {
+                        setLoginUserInfo(res.result);
+                        ElMessage.success('登录成功~');
+                        router.push({ path: '/' });
+                    }
+                    submiting.value = false;
+                },
+                () => {
+                    submiting.value = false;
                 }
-            });
+            );
         }
     });
 };

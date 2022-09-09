@@ -2,13 +2,17 @@
 import { RouteRecordRaw } from 'vue-router';
 import Layout from '@/components/layout/index.vue';
 
+// 扩展属性
+interface extendRoute {
+    hidden?: boolean;
+}
 /**
  * 基础路由 | 所有用户可访问的路由
  * 这些路由是路由实例创建时添加的路由
  * component - 组件或import的懒加载组件
  * hidden - 是否在菜单栏显示
  */
-const baseRoutes = [
+const baseRoutes: Array<RouteRecordRaw & extendRoute> = [
     {
         path: '/',
         component: Layout,
@@ -39,7 +43,7 @@ const baseRoutes = [
  * 在动态添加路由的时候，需要根据component获取实际的路由组件
  */
 
-const adminRoutes = [
+const adminRoutes: Array<RouteRecordRaw & extendRoute> = [
     {
         path: '/permission',
         component: 'Layout',

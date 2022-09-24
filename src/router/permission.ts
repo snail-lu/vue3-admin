@@ -110,6 +110,14 @@ const adminRoutes: Array<RouteRecordRaw & extendRoute> = [
                 }
             },
             {
+                path: 'add',
+                component: '../views/goods/addGoods.vue',
+                hidden: true,
+                meta: {
+                    title: '新增商品'
+                }
+            },
+            {
                 path: 'category',
                 component: '../views/goods/category.vue',
                 meta: {

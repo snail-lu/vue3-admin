@@ -1,5 +1,5 @@
 <template>
-    <dynamic-form :items="formItems" :form="form" :config="formProps" />
+    <dynamic-form :items="formItems" :form="form" :form-props="formProps" />
 </template>
 
 <script setup>

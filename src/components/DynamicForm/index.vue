@@ -1,6 +1,6 @@
 <template>
     <div class="g-container">
-        <el-form :model="initForm" label-width="100px">
+        <el-form :model="initForm" v-bind="formProps">
             <el-form-item
                 v-for="item in items"
                 :key="item.key"
@@ -27,6 +27,10 @@ const props = defineProps({
         default: []
     },
     form: {
+        type: Object,
+        default: {}
+    },
+    formProps: {
         type: Object,
         default: {}
     }

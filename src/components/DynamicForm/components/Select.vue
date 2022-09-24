@@ -1,5 +1,5 @@
 <template>
-    <el-select v-bind="$attrs" v-on="$listeners">
+    <el-select>
         <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
 </template>

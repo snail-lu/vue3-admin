@@ -1,5 +1,5 @@
 <template>
-    <el-date-picker />
+    <el-input-number />
 </template>
 
 <script setup></script>

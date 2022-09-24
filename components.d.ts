@@ -30,6 +30,7 @@ declare module '@vue/runtime-core' {
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElInput: typeof import('element-plus/es')['ElInput']
+    ElInputNumber: typeof import('element-plus/es')['ElInputNumber']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElOption: typeof import('element-plus/es')['ElOption']
@@ -41,7 +42,10 @@ declare module '@vue/runtime-core' {
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTag: typeof import('element-plus/es')['ElTag']
+    ElTimePicker: typeof import('element-plus/es')['ElTimePicker']
     Input: typeof import('./src/components/DynamicForm/components/Input.vue')['default']
+    'Input copy': typeof import('./src/components/DynamicForm/components/Input copy.vue')['default']
+    InputNumber: typeof import('./src/components/DynamicForm/components/InputNumber.vue')['default']
     Layout: typeof import('./src/components/layout/index.vue')['default']
     Loading: typeof import('element-plus/es')['ElLoadingDirective']
     PieChart: typeof import('./src/components/Chart/PieChart.vue')['default']
@@ -50,6 +54,8 @@ declare module '@vue/runtime-core' {
     Select: typeof import('./src/components/DynamicForm/components/Select.vue')['default']
     SideBar: typeof import('./src/components/Sidebar/SideBar.vue')['default']
     SideBarItem: typeof import('./src/components/Sidebar/SideBarItem.vue')['default']
+    TiePicker: typeof import('./src/components/DynamicForm/components/TiePicker.vue')['default']
+    TimePicker: typeof import('./src/components/DynamicForm/components/TimePicker.vue')['default']
   }
 }
 

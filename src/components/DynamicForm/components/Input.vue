@@ -1,5 +1,5 @@
 <template>
-    <el-input type="text" v-bind="$attrs" v-on="$listeners" />
+    <el-input type="text" />
 </template>
 
 <script setup></script>

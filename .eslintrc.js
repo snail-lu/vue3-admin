@@ -7,7 +7,7 @@ module.exports = {
     plugins: ['vue', 'prettier'],
 
     // add your custom rules here
-    //it is base on https://github.com/vuejs/eslint-config-vue
+    // it is base on https://github.com/vuejs/eslint-config-vue
     rules: {
         'prettier/prettier': 'error',
         'vue/singleline-html-element-content-newline': 'off',
@@ -60,7 +60,7 @@ module.exports = {
         'handle-callback-err': [2, '^(err|error)$'],
         indent: [
             2,
-            2,
+            4,
             {
                 SwitchCase: 1
             }
@@ -80,6 +80,7 @@ module.exports = {
                 after: true
             }
         ],
+        'vue/multi-word-component-names': 0,
         'new-cap': [
             2,
             {
@@ -157,7 +158,7 @@ module.exports = {
         'no-this-before-super': 2,
         'no-throw-literal': 2,
         'no-trailing-spaces': 2,
-        'no-undef': 2,
+        'no-undef': 1,
         'no-undef-init': 2,
         'no-unexpected-multiline': 2,
         'no-unmodified-loop-condition': 2,
@@ -207,7 +208,7 @@ module.exports = {
                 allowTemplateLiterals: true
             }
         ],
-        semi: [2, 'never'],
+        semi: [0, 'never'],
         'semi-spacing': [
             2,
             {
@@ -236,6 +237,7 @@ module.exports = {
         'template-curly-spacing': [2, 'never'],
         'use-isnan': 2,
         'valid-typeof': 2,
+        'vue/html-indent': [2, 4],
         'wrap-iife': [2, 'any'],
         'yield-star-spacing': [2, 'both'],
         yoda: [2, 'never'],

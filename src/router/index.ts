@@ -1,4 +1,4 @@
-import { createRouter, RouteRecordRaw, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import { store } from '@/store/index';
 import { baseRoutes } from '@/router/permission';
 

@@ -9,7 +9,7 @@ import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: '/mall-management/',
+    base: '/vue3-admin/',
     plugins: [
         vue(),
         AutoImport({

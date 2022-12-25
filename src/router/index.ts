@@ -3,7 +3,7 @@ import { store } from '@/store/index';
 import { baseRoutes } from '@/router/permission';
 
 const router = createRouter({
-    history: createWebHistory('/vue3-admin/'),
+    history: createWebHistory('/vue3-ts-admin/'),
     routes: baseRoutes
 });
 

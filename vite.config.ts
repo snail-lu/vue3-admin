@@ -9,7 +9,7 @@ import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: '/vue3-admin/',
+    base: '/vue3-ts-admin/',
     plugins: [
         vue(),
         AutoImport({

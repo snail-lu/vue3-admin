@@ -41,9 +41,8 @@ import { useRouter } from 'vue-router';
 const store = useStore();
 const userInfo = computed(() => store.state.userInfo);
 
-// 清空用户信息和用户路由
+// 清空用户信息
 const clearUserInfo = () => {
-    store.commit('clearRoutes');
     store.commit('setUserInfo', { userInfo: null });
 };
 

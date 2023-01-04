@@ -1,6 +1,6 @@
 import request from '@/utils/request';
 import { LoginFormDto } from '@/types/login';
-import { adminRoutes, operatorRoutes, developerRoutes } from '@/router/permission';
+import { adminRoutes } from '@/router/permission';
 
 export function login(data: LoginFormDto) {
     const { username } = data;
@@ -12,15 +12,10 @@ export function login(data: LoginFormDto) {
 }
 
 // 获取用户路由
-export function getRoleRoutes(roleType: number | string) {
-    const roleRoutesMap = {
-        1: adminRoutes,
-        2: operatorRoutes,
-        3: developerRoutes
-    };
+export function getRoleRoutes() {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(roleRoutesMap[roleType]);
+            resolve(adminRoutes);
         }, 300);
     });
 }

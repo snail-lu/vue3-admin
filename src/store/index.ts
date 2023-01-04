@@ -5,10 +5,10 @@ import { errorRoutes } from '@/router/permission';
 import router from '@/router/index';
 import { transformRoutes } from '@/utils';
 import _ from 'lodash';
-import { getRoleRoutes } from '@/api/user';
 
 // 需要持久化的state放这里
-const modules = ['userInfo', 'roleRoutes'];
+const modules = ['userInfo'];
+
 // 创建vuex持久化实例
 const vuexLocal = new VuexPersistence({
     storage: window.localStorage,
@@ -21,7 +21,6 @@ export const store = createStore({
         return {
             userInfo: null,
             isCollapse: false,
-            roleRoutes: [],
             addRoleRoutes: true
         };
     },
@@ -36,7 +35,6 @@ export const store = createStore({
         },
         // 动态添加路由
         addRoutes(state: StateDto, { roleRoutes }) {
-            state.roleRoutes = roleRoutes;
             // 深拷贝路由数据，避免transform过程污染component属性
             const asyncRoutes = _.cloneDeep([...roleRoutes, ...errorRoutes]);
             transformRoutes(asyncRoutes);
@@ -49,18 +47,14 @@ export const store = createStore({
         },
         // 清空用户路由
         clearRoutes(state: StateDto) {
-            state.roleRoutes = [];
             state.addRoleRoutes = true;
         }
     },
     actions: {
         // 动态添加路由
         async addRoutes(context) {
-            let roleRoutes = context.state.roleRoutes;
+            let roleRoutes = context.state.userInfo.routes;
             if (roleRoutes.length > 0) {
-                context.commit('addRoutes', { roleRoutes });
-            } else {
-                roleRoutes = await getRoleRoutes(context.state.userInfo.role);
                 context.commit('addRoutes', { roleRoutes });
             }
         }

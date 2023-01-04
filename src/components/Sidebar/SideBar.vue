@@ -8,9 +8,7 @@
         :router="true"
         :default-active="activePath"
     >
-        <template v-for="item in menu" :key="`${item.path}`">
-            <SideBarItem :menu="item" base-path="" />
-        </template>
+        <SideBarItem v-for="item in menu" :key="item?.path" :menu="item" base-path="" />
     </el-menu>
 </template>
 
@@ -25,7 +23,7 @@ import { baseRoutes } from '@/router/permission';
 const store = useStore();
 const collapse = computed(() => store.state.isCollapse);
 const menu = computed(() => {
-    return baseRoutes.concat(store.state.roleRoutes);
+    return baseRoutes.concat(store.state.userInfo?.routes);
 });
 
 // 当前激活的菜单

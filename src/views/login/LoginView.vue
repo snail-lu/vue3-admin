@@ -1,8 +1,8 @@
 <template>
     <div class="login-container">
         <div class="login-form-wrapper">
-            <h1 class="title">系统登录</h1>
-            <el-form ref="loginFormRef" :model="loginForm" :rules="rules" class="login-form" status-icon>
+            <h1 class="title">欢迎登录</h1>
+            <el-form ref="loginFormRef" :model="loginForm" :rules="rules" class="login-form">
                 <el-form-item label="" prop="username">
                     <el-input placeholder="用户名" v-model="loginForm.username">
                         <template #prepend>
@@ -11,7 +11,7 @@
                     </el-input>
                 </el-form-item>
                 <el-form-item label="" prop="password">
-                    <el-input placeholder="密码" v-model="loginForm.password" type="password">
+                    <el-input placeholder="密码" v-model="loginForm.password" type="password" show-password>
                         <template #prepend>
                             <el-button icon="Unlock" />
                         </template>
@@ -28,7 +28,7 @@
                     <!-- <el-button class="reset-btn" @click="resetForm(loginFormRef)">重置</el-button> -->
                 </el-form-item>
             </el-form>
-            <div class="tips">提示：由于接口服务部署在HEROKU上，出现Network Error后多试几次即可。</div>
+            <div class="tips">提示：用户名为admin或guest，密码为123456</div>
         </div>
     </div>
 </template>
@@ -136,6 +136,7 @@ const resetForm = (formEl: FormInstance | undefined) => {
         width: 260px;
         font-size: 12px;
         color: #666;
+        user-select: none;
     }
 }
 </style>

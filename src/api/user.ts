@@ -3,9 +3,10 @@ import { LoginFormDto } from '@/types/login';
 import { adminRoutes, operatorRoutes, developerRoutes } from '@/router/permission';
 
 export function login(data: LoginFormDto) {
+    const { username } = data;
     return request({
         method: 'POST',
-        url: '/admin/login',
+        url: `/${username}/login`,
         data
     });
 }

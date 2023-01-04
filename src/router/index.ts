@@ -9,7 +9,6 @@ const router = createRouter({
 
 // 导航守卫
 router.beforeEach(async (to, from, next) => {
-    console.log(to, 'to');
     // 根据登录状态决定路由方向
     const userInfo = store.state.userInfo;
     // 是否需要动态添加路由

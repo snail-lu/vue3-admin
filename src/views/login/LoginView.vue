@@ -82,7 +82,8 @@ const submitForm = async (formEl: FormInstance | undefined) => {
                     }
                     submiting.value = false;
                 },
-                () => {
+                (err) => {
+                    ElMessage.error('登录失败，请检查用户名或密码');
                     submiting.value = false;
                 }
             );

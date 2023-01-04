@@ -25,7 +25,7 @@ request.interceptors.response.use(
     (res) => {
         const code: number = res.data.code;
         if (code !== 200) {
-            ElMessage.error(res.data.message);
+            res.data.message && ElMessage.error(res.data.message);
             return Promise.reject(res.data);
         }
         return res.data;

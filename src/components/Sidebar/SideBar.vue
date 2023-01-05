@@ -4,11 +4,12 @@
         background-color="#011825"
         class="sidebar-container"
         text-color="#fff"
-        :collapse="collapse"
+        :collapse="isCollapse"
         :router="true"
         :default-active="activePath"
+        v-if="menu && menu.length > 0"
     >
-        <SideBarItem v-for="item in menu" :key="item?.path" :menu="item" base-path="" />
+        <SideBarItem v-for="item in menu" :key="item?.path" :menu="item" />
     </el-menu>
 </template>
 
@@ -21,7 +22,7 @@ import { baseRoutes } from '@/router/permission';
 
 // 侧边导航折叠/展开控制
 const store = useStore();
-const collapse = computed(() => store.state.isCollapse);
+const isCollapse = computed(() => store.state.isCollapse);
 const menu = computed(() => {
     return baseRoutes.concat(store.state.userInfo?.routes);
 });

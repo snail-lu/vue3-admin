@@ -1,5 +1,5 @@
 <template>
-    <div>运营者专属页面</div>
+    <div>访客专属页面</div>
 </template>
 
 <script setup lang="ts"></script>

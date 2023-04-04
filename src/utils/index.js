@@ -13,7 +13,7 @@ export const transformRoutes = (routes) => {
     return routes;
 };
 
-export const loadComponent = (component: string) => {
+export const loadComponent = (component) => {
     if (component === 'Layout') {
         return Layout;
     } else {

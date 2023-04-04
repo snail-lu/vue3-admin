@@ -1,5 +1,4 @@
 import { createStore } from 'vuex';
-import { StateDto } from './../types/store';
 import VuexPersistence from 'vuex-persist';
 import { errorRoutes } from '@/router/permission';
 import router from '@/router/index';
@@ -26,15 +25,15 @@ export const store = createStore({
     },
     mutations: {
         // 修改左侧导航啦折叠状态
-        changeCollapse(state: StateDto) {
+        changeCollapse(state) {
             state.isCollapse = !state.isCollapse;
         },
         // 存储登录用户信息
-        setUserInfo(state: StateDto, { userInfo }) {
+        setUserInfo(state, { userInfo }) {
             state.userInfo = userInfo;
         },
         // 动态添加路由
-        addRoutes(state: StateDto, { roleRoutes }) {
+        addRoutes(state, { roleRoutes }) {
             // 深拷贝路由数据，避免transform过程污染component属性
             const asyncRoutes = _.cloneDeep([...roleRoutes, ...errorRoutes]);
             transformRoutes(asyncRoutes);
@@ -46,7 +45,7 @@ export const store = createStore({
             state.addRoleRoutes = false;
         },
         // 清空用户路由
-        clearRoutes(state: StateDto) {
+        clearRoutes(state) {
             state.addRoleRoutes = true;
         }
     },

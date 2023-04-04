@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { ElMessage } from 'element-plus';
 import 'element-plus/es/components/message/style/css';
 
 // 创建HTTP实例
@@ -23,7 +22,7 @@ request.interceptors.request.use((config) => {
 // 响应拦截
 request.interceptors.response.use(
     (res) => {
-        const code: number = res.data.code;
+        const code = res.data.code;
         if (code !== 200) {
             res.data.message && ElMessage.error(res.data.message);
             return Promise.reject(res.data);

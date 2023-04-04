@@ -37,14 +37,15 @@ export default defineConfig({
     },
     server: {
         host: true,
-        port: 8080,
-        proxy: {
-            '/api': {
-                target: 'http://localhost:4000',
-                changeOrigin: true,
-                rewrite: (path) => path.replace(/^\/api/, '/api')
-            }
-        }
+        port: 8080
+        // 代理配置，本项目使用了fast mock，无需配置代理
+        // proxy: {
+        //     '/api': {
+        //         target: 'http://localhost:4000',
+        //         changeOrigin: true,
+        //         rewrite: (path) => path.replace(/^\/api/, '/api')
+        //     }
+        // }
     },
     css: {
         postcss: {

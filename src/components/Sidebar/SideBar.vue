@@ -1,14 +1,6 @@
 <template>
-    <el-menu
-        active-text-color="#ffffff"
-        background-color="#011825"
-        class="sidebar-container"
-        text-color="#fff"
-        :collapse="isCollapse"
-        :router="true"
-        :default-active="activePath"
-        v-if="menu && menu.length > 0"
-    >
+    <el-menu active-text-color="#ffffff" background-color="#011825" class="sidebar-container" text-color="#fff"
+        :collapse="isCollapse" :router="true" :default-active="activePath" v-if="menu && menu.length > 0">
         <SideBarItem v-for="item in menu" :key="item?.path" :menu="item" />
     </el-menu>
 </template>

@@ -3,24 +3,28 @@ import vue from '@vitejs/plugin-vue';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
-import { resolve } from 'path';
+import { fileURLToPath, URL } from 'node:url';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: '/vue3-ts-admin/',
+    base: '/vue3-admin/',
     plugins: [
         vue(),
         AutoImport({
-            // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
-            imports: ['vue'],
-            // 自动导入 Element Plus 相关函数，如：ElMessage, ElMessageBox... (带样式)
+            // 自动导入 Vue, vue-router, pinia, 以及ElMessage, ElMessageBox等API
+            imports: ['vue', 'vue-router', 'pinia', { 'element-plus/es': ['ElMessage', 'ElMessageBox'] }],
+            dts: 'src/auto-import.d.ts',
+            eslintrc: {
+                enabled: true
+            },
             resolvers: [ElementPlusResolver()]
         }),
         Components({
             resolvers: [
                 // 自动导入 Element Plus 组件
                 ElementPlusResolver()
-            ]
+            ],
+            dts: 'src/components.d.ts'
         })
     ],
     resolve: {
@@ -28,11 +32,11 @@ export default defineConfig({
         extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],
         // 路径别名
         alias: {
-            '@': resolve(__dirname, './src')
+            '@': fileURLToPath(new URL('./src', import.meta.url))
         }
     },
     server: {
-        host: '0.0.0.0',
+        host: true,
         port: 8080,
         proxy: {
             '/api': {
@@ -46,6 +50,24 @@ export default defineConfig({
         postcss: {
             // css自动添加浏览器前缀
             plugins: [require('autoprefixer')]
+        }
+    },
+    build: {
+        outDir: 'hl-scn-collection-web-h5',
+        terserOptions: {
+            compress: {
+                keep_infinity: true
+            }
+        },
+        // 禁用该功能可能会提高大型项目的构建性能
+        brotliSize: false,
+        rollupOptions: {
+            output: {
+                // 拆分单独模块
+                manualChunks: {
+                    'element-plus': ['element-plus']
+                }
+            }
         }
     }
 });

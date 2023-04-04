@@ -1,6 +1,5 @@
 import { ref } from 'vue';
 import request from '@/utils/request';
-import { responseDto } from '@/types/request';
 
 export default function tableSearch({ searchForm, searchUrl }) {
     const tableData = ref([]);
@@ -11,7 +10,7 @@ export default function tableSearch({ searchForm, searchUrl }) {
     const getTableData = async () => {
         try {
             loading.value = true;
-            let res: responseDto = await request({ url: searchUrl, data: searchForm, method: 'POST' });
+            let res = await request({ url: searchUrl, data: searchForm, method: 'POST' });
             if (res && res.result) {
                 tableData.value = res.result.list;
                 total.value = res.result.total;

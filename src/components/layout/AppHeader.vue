@@ -3,7 +3,7 @@
         <!-- 系统标题 -->
         <div class="box-l">
             <img class="logo" src="../../assets/logo.png" />
-            <span class="title">商城管理系统</span>
+            <span class="title">后台管理系统</span>
         </div>
 
         <!-- 用户信息 -->
@@ -40,6 +40,7 @@ const userInfo = computed(() => store.state.userInfo);
 // 清空用户信息
 const clearUserInfo = () => {
     store.commit('setUserInfo', { userInfo: null });
+    store.commit('clearRoutes');
 };
 
 const isFullScreen = ref(false);

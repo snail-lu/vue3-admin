@@ -13,7 +13,7 @@ import { baseRoutes } from '@/router/permission';
 
 // 侧边导航折叠/展开控制
 const store = useStore();
-const isCollapsed = computed(() => store.state.isCollapse);
+const isCollapsed = computed(() => store.state.isCollapsed);
 const menu = computed(() => {
     return baseRoutes.concat(store.state.userInfo?.routes);
 });

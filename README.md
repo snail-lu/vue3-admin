@@ -1,4 +1,4 @@
-<h2 align="center">商城管理系统</h2>
+<h2 align="center">后台管理系统</h2>
 <p align="center">
     <a href="https://snaillu.gitee.io/mall-management/" target="_blank">线上地址</a>
     ·
@@ -9,7 +9,7 @@
 
 ## 简介
 
-基于`Vue3` + `Element-Plus` 开发的商城管理系统。
+基于`Vue3` + `Element-Plus` 开发的后台管理系统，汇集了后台管理系统开发中常用到的功能。
 
 ## 功能实现
 

@@ -1,6 +1,7 @@
 <template>
     <section class="app-main">
         <router-view v-slot="{ Component }">
+            <!-- 使用transition，组件中必须要有一个根元素，否则在动态添加路由的时候会出现页面白屏的问题 -->
             <transition name="fade" mode="out-in">
                 <component :is="Component" />
             </transition>

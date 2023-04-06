@@ -1,6 +1,6 @@
 <template>
     <div class="breadcrumb-container">
-        <el-icon :size="20" v-if="isCollapse" @click="changeCollapse" style="cursor: pointer">
+        <el-icon :size="20" v-if="isCollapsed" @click="changeCollapse" style="cursor: pointer">
             <expand />
         </el-icon>
         <el-icon :size="20" v-else @click="changeCollapse" style="cursor: pointer">
@@ -20,7 +20,7 @@ const list = computed(() => {
 
 // 侧边导航折叠/展开控制
 const store = useStore();
-const isCollapse = computed(() => store.state.isCollapse);
+const isCollapsed = computed(() => store.state.isCollapsed);
 const changeCollapse = () => store.commit('changeCollapse');
 </script>
 <style lang="scss" scoped>

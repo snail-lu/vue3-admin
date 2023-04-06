@@ -84,26 +84,25 @@ const onAdd = () => {
 };
 
 // 编辑
-const onEdit = (userInfo: Object) => {
+const onEdit = (userInfo) => {
     addForm.value.show(userInfo);
 };
 
 // 删除
-const onDelete = async (userInfo: { id: string }) => {
+const onDelete = async (userInfo) => {
     await deleteAdmin({ id: userInfo.id });
     onSearch();
 };
 
 // 编辑弹窗确认
-const onConfirm = (confirm: boolean) => {
+const onConfirm = (confirm) => {
     if (confirm) {
         onSearch();
     }
 };
 
 // 角色类型map
-type stringKey = Record<string, string>;
-const roleMap: stringKey = {
+const roleMap = {
     1: '管理员',
     2: '运营者',
     3: '开发者'

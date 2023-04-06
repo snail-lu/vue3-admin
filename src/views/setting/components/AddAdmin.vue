@@ -31,13 +31,12 @@
     </el-dialog>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { reactive, ref } from 'vue';
 import { Md5 } from 'ts-md5';
 import { addAdmin, updateAdmin } from '@/api/setting';
-import type { FormInstance, FormRules } from 'element-plus';
 
-const formRef = ref<FormInstance>();
+const formRef = ref();
 const form = ref({
     username: '',
     email: '',
@@ -45,7 +44,7 @@ const form = ref({
     role: 2,
     status: 1
 });
-const rules = reactive<FormRules>({
+const rules = reactive({
     username: [
         { required: true, message: '请输入用户名', trigger: 'blur' },
         { min: 5, message: '长度不可小于5', trigger: 'blur' }
@@ -73,7 +72,7 @@ const onCancel = () => {
 };
 
 // 保存操作
-const onConfirm = async (formEl: FormInstance) => {
+const onConfirm = async (formEl) => {
     let valid = await formEl.validate();
     if (!valid) return false;
 
@@ -92,7 +91,7 @@ const onConfirm = async (formEl: FormInstance) => {
 const visible = ref(false);
 const title = ref('新增管理员');
 // 显示组件
-const show = (data: object) => {
+const show = (data) => {
     visible.value = true;
     if (data) {
         title.value = '编辑管理员';

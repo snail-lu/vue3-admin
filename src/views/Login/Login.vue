@@ -30,6 +30,7 @@
 <script setup>
 import { login } from '@/api/user';
 import { Md5 } from 'ts-md5';
+import { useCommonStore } from '../../store';
 
 // 路由示例
 const router = useRouter();
@@ -53,8 +54,7 @@ const rules = {
 };
 
 // 登录用户信息保存
-const store = useStore();
-const setLoginUserInfo = (userInfo) => store.commit('setUserInfo', { userInfo });
+const store = useCommonStore();
 
 let submiting = ref(false);
 // 表单提交
@@ -66,7 +66,7 @@ const submitForm = async (formEl) => {
             login({ ...loginForm, password: Md5.hashStr(loginForm.password) }).then(
                 (res) => {
                     if (res && res.success) {
-                        setLoginUserInfo(res.result);
+                        store.setUserInfo(res.result);
                         ElMessage.success('登录成功!');
                         router.push({ path: '/' });
                     }

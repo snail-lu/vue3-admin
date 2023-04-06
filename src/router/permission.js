@@ -50,7 +50,7 @@ const adminRoutes = [
             {
                 path: 'admin',
                 name: 'PermissionAdmin',
-                component: '../views/permission/Admin.vue',
+                component: 'views/permission/Admin.vue',
                 meta: {
                     title: '管理员专属页面'
                 }
@@ -67,21 +67,21 @@ const adminRoutes = [
         children: [
             {
                 path: 'list',
-                component: '../views/pages/index.vue',
+                component: 'views/pages/index.vue',
                 meta: {
                     title: '页面列表'
                 }
             },
             {
                 path: 'component-lib',
-                component: '../views/pages/lib.vue',
+                component: 'views/pages/lib.vue',
                 meta: {
                     title: '组件库'
                 }
             },
             {
                 path: 'add',
-                component: '../views/pages/add.vue',
+                component: 'views/pages/add.vue',
                 hidden: true,
                 meta: {
                     title: '新增页面'
@@ -99,14 +99,14 @@ const adminRoutes = [
         children: [
             {
                 path: 'list',
-                component: '../views/goods/index.vue',
+                component: 'views/goods/index.vue',
                 meta: {
                     title: '商品列表'
                 }
             },
             {
                 path: 'add',
-                component: '../views/goods/addGoods.vue',
+                component: 'views/goods/addGoods.vue',
                 hidden: true,
                 meta: {
                     title: '新增商品'
@@ -114,21 +114,21 @@ const adminRoutes = [
             },
             {
                 path: 'category',
-                component: '../views/goods/category.vue',
+                component: 'views/goods/category.vue',
                 meta: {
                     title: '商品分类'
                 }
             },
             {
                 path: 'inventory',
-                component: '../views/goods/inventory.vue',
+                component: 'views/goods/inventory.vue',
                 meta: {
                     title: '库存列表'
                 }
             },
             {
                 path: 'comments',
-                component: '../views/goods/comments.vue',
+                component: 'views/goods/comments.vue',
                 meta: {
                     title: '评论列表'
                 }
@@ -145,14 +145,14 @@ const adminRoutes = [
         children: [
             {
                 path: 'list',
-                component: '../views/order/index.vue',
+                component: 'views/order/index.vue',
                 meta: {
                     title: '订单列表'
                 }
             },
             {
                 path: 'refund',
-                component: '../views/order/refund.vue',
+                component: 'views/order/refund.vue',
                 meta: {
                     title: '售后列表'
                 }
@@ -186,21 +186,21 @@ const adminRoutes = [
         children: [
             {
                 path: 'list',
-                component: '../views/activity/index.vue',
+                component: 'views/activity/index.vue',
                 meta: {
                     title: '活动列表'
                 }
             },
             {
                 path: 'calendar',
-                component: '../views/activity/calendar.vue',
+                component: 'views/activity/calendar.vue',
                 meta: {
                     title: '活动日历'
                 }
             },
             {
                 path: 'coupon',
-                component: '../views/activity/coupon.vue',
+                component: 'views/activity/coupon.vue',
                 meta: {
                     title: '优惠券'
                 }
@@ -217,14 +217,14 @@ const adminRoutes = [
         children: [
             {
                 path: 'list',
-                component: '../views/shop/index.vue',
+                component: 'views/shop/index.vue',
                 meta: {
                     title: '门店列表'
                 }
             },
             {
                 path: 'guide',
-                component: '../views/shop/guide.vue',
+                component: 'views/shop/guide.vue',
                 meta: {
                     title: '导购列表'
                 }
@@ -241,14 +241,14 @@ const adminRoutes = [
         children: [
             {
                 path: 'freight',
-                component: '../views/setting/freight.vue',
+                component: 'views/setting/freight.vue',
                 meta: {
                     title: '运费设置'
                 }
             },
             {
                 path: 'admin',
-                component: '../views/setting/admin.vue',
+                component: 'views/setting/admin.vue',
                 meta: {
                     title: '管理员管理'
                 }
@@ -264,13 +264,9 @@ const adminRoutes = [
 const errorRoutes = [
     // 404 页面必须放路由的最后
     {
-        path: '/404',
-        component: '../views/NotFound.vue',
-        hidden: true
-    },
-    {
         path: '/:pathMatch(.*)*',
-        redirect: '/404',
+        component: 'views/NotFound.vue',
+        // redirect: '/404',
         hidden: true
     }
 ];

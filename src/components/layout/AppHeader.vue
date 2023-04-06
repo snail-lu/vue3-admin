@@ -34,13 +34,15 @@
 </template>
 
 <script setup>
-const store = useStore();
-const userInfo = computed(() => store.state.userInfo);
+import { useCommonStore } from '../../store';
+
+const store = useCommonStore()
+const userInfo = computed(() => store.userInfo);
 
 // 清空用户信息
 const clearUserInfo = () => {
-    store.commit('setUserInfo', { userInfo: null });
-    store.commit('clearRoutes');
+    store.setUserInfo(null);
+    store.resetNeedAddRoutes();
 };
 
 const isFullScreen = ref(false);

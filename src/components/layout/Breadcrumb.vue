@@ -12,6 +12,7 @@
     </div>
 </template>
 <script setup>
+import { useCommonStore } from '../../store';
 const route = useRoute();
 // 获取当前路由栈
 const list = computed(() => {
@@ -19,9 +20,9 @@ const list = computed(() => {
 });
 
 // 侧边导航折叠/展开控制
-const store = useStore();
-const isCollapsed = computed(() => store.state.isCollapsed);
-const changeCollapse = () => store.commit('changeCollapse');
+const store = useCommonStore();
+const isCollapsed = computed(() => store.isCollapsed);
+const changeCollapse = () => store.changeCollapse();
 </script>
 <style lang="scss" scoped>
 .breadcrumb-container {

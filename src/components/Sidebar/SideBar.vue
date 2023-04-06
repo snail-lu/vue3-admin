@@ -10,12 +10,13 @@
 <script setup>
 import SideBarItem from './SideBarItem.vue';
 import { baseRoutes } from '@/router/permission';
+import { useCommonStore } from '../../store';
 
 // 侧边导航折叠/展开控制
-const store = useStore();
-const isCollapsed = computed(() => store.state.isCollapsed);
+const store = useCommonStore();
+const isCollapsed = computed(() => store.isCollapsed);
 const menu = computed(() => {
-    return baseRoutes.concat(store.state.userInfo?.routes);
+    return baseRoutes.concat(store.userInfo?.routes);
 });
 
 // 当前激活的菜单

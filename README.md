@@ -9,7 +9,7 @@
 
 ## 简介
 
-基于`Vue3` + `TypeScript` + `Element-Plus` 开发的商城管理系统。
+基于`Vue3` + `Element-Plus` 开发的商城管理系统。
 
 ## 功能实现
 

@@ -8,6 +8,7 @@ import 'element-plus/es/components/message-box/style/css';
 import '@/styles/index.scss'; // global css
 
 const app = createApp(App);
+// 注册所有Element-Plus图标组件
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component);
 }

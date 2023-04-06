@@ -17,6 +17,6 @@ export const loadComponent = (component) => {
     if (component === 'Layout') {
         return Layout;
     } else {
-        return modules[component];
+        return modules[`../${component}`];
     }
 };

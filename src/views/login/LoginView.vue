@@ -18,13 +18,8 @@
                     </el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button
-                        type="primary"
-                        class="login-btn"
-                        @click="submitForm(loginFormRef)"
-                        :disabled="submiting"
-                        >{{ submiting ? '登录中...' : '登录' }}</el-button
-                    >
+                    <el-button type="primary" class="login-btn" @click="submitForm(loginFormRef)" :disabled="submiting">{{
+                        submiting ? '登录中...' : '登录' }}</el-button>
                     <!-- <el-button class="reset-btn" @click="resetForm(loginFormRef)">重置</el-button> -->
                 </el-form-item>
             </el-form>
@@ -32,20 +27,15 @@
         </div>
     </div>
 </template>
-<script setup lang="ts">
-import { reactive, ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { useStore } from 'vuex';
-import { FormInstance, ElMessage } from 'element-plus';
-import { LoginFormDto } from '../../types/login';
+<script setup>
 import { login } from '@/api/user';
 import { Md5 } from 'ts-md5';
 
 // 路由示例
 const router = useRouter();
 // 表单ref及数据
-const loginFormRef = ref<FormInstance>();
-const loginForm = reactive<LoginFormDto>({
+const loginFormRef = ref();
+const loginForm = reactive({
     username: 'admin',
     password: '123456'
 });
@@ -64,11 +54,11 @@ const rules = {
 
 // 登录用户信息保存
 const store = useStore();
-const setLoginUserInfo = (userInfo: object) => store.commit('setUserInfo', { userInfo });
+const setLoginUserInfo = (userInfo) => store.commit('setUserInfo', { userInfo });
 
 let submiting = ref(false);
 // 表单提交
-const submitForm = async (formEl: FormInstance | undefined) => {
+const submitForm = async (formEl) => {
     if (!formEl) return;
     submiting.value = true;
     await formEl.validate((valid) => {
@@ -77,7 +67,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
                 (res) => {
                     if (res && res.success) {
                         setLoginUserInfo(res.result);
-                        ElMessage.success('登录成功~');
+                        ElMessage.success('登录成功!');
                         router.push({ path: '/' });
                     }
                     submiting.value = false;
@@ -92,7 +82,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
 };
 
 // 表单重置
-const resetForm = (formEl: FormInstance | undefined) => {
+const resetForm = (formEl) => {
     if (!formEl) return;
     formEl.resetFields();
 };

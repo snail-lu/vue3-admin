@@ -1,34 +1,30 @@
 <template>
-    <div v-if="!menu?.hidden">
-        <!-- 存在子菜单 -->
-        <el-sub-menu v-if="hasVisibleChildren" :index="routePath" :show-timeout="100" :hide-timeout="100">
-            <template #title>
-                <el-icon>
-                    <component :is="menu.meta?.icon ? menu.meta.icon : ''"></component>
-                </el-icon>
-                <span>{{ menu?.meta?.title }}</span>
-            </template>
-            <SideBarItem
-                v-for="subItem in menu?.children"
-                :key="subItem?.path"
-                :menu="subItem"
-                :base-path="routePath"
-            />
-        </el-sub-menu>
-
-        <!-- 不存在子菜单 -->
-        <el-menu-item :index="routePath" v-else>
-            <el-icon v-if="menu?.meta?.icon">
+    <!-- 存在子菜单 -->
+    <el-sub-menu v-if="hasVisibleChildren" :index="routePath" :show-timeout="100" :hide-timeout="100">
+        <template #title>
+            <el-icon>
                 <component :is="menu.meta?.icon ? menu.meta.icon : ''"></component>
             </el-icon>
             <span>{{ menu?.meta?.title }}</span>
-        </el-menu-item>
-    </div>
+        </template>
+
+        <!-- 递归渲染下级菜单 -->
+        <template v-for="subItem in menu?.children" :key="subItem?.path">
+            <SideBarItem v-if="!subItem?.hidden" :menu="subItem" :base-path="routePath" />
+        </template>
+    </el-sub-menu>
+
+    <!-- 不存在子菜单 -->
+    <el-menu-item :index="routePath" v-else>
+        <el-icon v-if="menu?.meta?.icon">
+            <component :is="menu.meta?.icon ? menu.meta.icon : ''"></component>
+        </el-icon>
+        <template #title>{{ menu?.meta?.title }}</template>
+    </el-menu-item>
+    <!-- </div> -->
 </template>
 
-<script lang="ts" setup>
-import { computed } from 'vue';
-
+<script setup>
 const props = defineProps({
     menu: Object,
     basePath: {

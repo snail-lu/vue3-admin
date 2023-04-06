@@ -12,7 +12,7 @@ export default defineConfig({
         vue(),
         AutoImport({
             // 自动导入 Vue, vue-router, pinia, 以及ElMessage, ElMessageBox等API
-            imports: ['vue', 'vue-router', 'pinia', { 'element-plus/es': ['ElMessage', 'ElMessageBox'] }],
+            imports: ['vue', 'vue-router', 'vuex', 'pinia', { 'element-plus/es': ['ElMessage', 'ElMessageBox'] }],
             dts: 'src/auto-import.d.ts',
             eslintrc: {
                 enabled: true

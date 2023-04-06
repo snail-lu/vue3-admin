@@ -5,7 +5,6 @@
 <script setup>
 import DynamicForm from '@/components/DynamicForm/index.vue';
 import { regionData } from 'element-china-area-data';
-import { ref } from 'vue';
 
 const formProps = ref({
     labelWidth: '100px',

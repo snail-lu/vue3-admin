@@ -42,10 +42,8 @@
     </div>
 </template>
 
-<script lang="ts" setup>
-import { onMounted, reactive, ref } from 'vue';
+<script setup>
 import tableSearch from '@/composables/tableSearch.js';
-import { ElMessage } from 'element-plus';
 
 const searchForm = reactive({
     pageName: '',
@@ -72,18 +70,18 @@ const onAdd = () => {
 };
 
 // 编辑
-const onEdit = (userInfo: Object) => {
+const onEdit = (userInfo) => {
     ElMessage('开发中~');
 };
 
 // 删除
-const onDelete = async (userInfo: { id: string }) => {
+const onDelete = async (userInfo) => {
     // await deleteAdmin({ id: userInfo.id });
     onSearch();
 };
 
 // 编辑弹窗确认
-const onConfirm = (confirm: boolean) => {
+const onConfirm = (confirm) => {
     if (confirm) {
         onSearch();
     }

@@ -11,11 +11,7 @@
         </el-breadcrumb>
     </div>
 </template>
-<script setup lang="ts">
-import { useRoute } from 'vue-router';
-import { computed } from 'vue';
-import { useStore } from 'vuex';
-
+<script setup>
 const route = useRoute();
 // 获取当前路由栈
 const list = computed(() => {

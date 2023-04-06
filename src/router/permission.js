@@ -1,5 +1,5 @@
 // import { h, resolveComponent } from 'vue';
-import Layout from '@/components/layout/index.vue';
+import Layout from '@/components/Layout/Layout.vue';
 
 /**
  * 基础路由 | 所有用户可访问的路由

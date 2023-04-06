@@ -1,4 +1,4 @@
-import Layout from '@/components/layout/index.vue';
+import Layout from '@/components/Layout/Layout.vue';
 
 const modules = import.meta.glob('../views/**/*.vue');
 

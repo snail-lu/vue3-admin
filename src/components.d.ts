@@ -53,7 +53,7 @@ declare module '@vue/runtime-core' {
     ElUpload: typeof import('element-plus/es')['ElUpload']
     Input: typeof import('./components/DynamicForm/components/Input.vue')['default']
     InputNumber: typeof import('./components/DynamicForm/components/InputNumber.vue')['default']
-    Layout: typeof import('./components/layout/index.vue')['default']
+    Layout: typeof import('./components/Layout/Layout.vue')['default']
     PieChart: typeof import('./components/Chart/PieChart.vue')['default']
     Radio: typeof import('./components/DynamicForm/components/Radio.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

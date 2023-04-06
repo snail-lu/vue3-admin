@@ -33,11 +33,7 @@
     </div>
 </template>
 
-<script lang="ts" setup>
-import { ref, computed } from 'vue';
-import { useStore } from 'vuex';
-import { useRouter } from 'vue-router';
-
+<script setup>
 const store = useStore();
 const userInfo = computed(() => store.state.userInfo);
 
@@ -65,7 +61,7 @@ function handleFullScreen() {
 
 const router = useRouter();
 
-const handleCommand = (command: string) => {
+const handleCommand = (command) => {
     switch (command) {
         case 'logout':
             logout();
@@ -89,7 +85,7 @@ function logout() {
             clearUserInfo();
             router.replace('/login');
         },
-        () => {}
+        () => { }
     );
 }
 

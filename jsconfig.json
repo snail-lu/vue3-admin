@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+        "types": ["element-plus/global"],
+        "lib": ["ESNext", "DOM"]
+    },
+    "exclude": ["node_modules", "dist"]
+}

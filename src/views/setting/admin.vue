@@ -12,19 +12,12 @@
                 <el-button @click="onAdd" type="primary" icon="Plus">新增</el-button>
             </el-form-item>
         </el-form>
-        <el-table
-            :data="tableData"
-            v-loading="loading"
-            stripe
-            style="width: 100%"
-            :cell-style="{ 'text-align': 'center' }"
+        <el-table :data="tableData" v-loading="loading" stripe style="width: 100%" :cell-style="{ 'text-align': 'center' }"
             :header-cell-style="{
                 background: '#F5F7FA',
                 color: '#606266',
                 textAlign: 'center'
-            }"
-            border
-        >
+            }" border>
             <el-table-column prop="username" label="用户名" />
             <el-table-column prop="email" label="邮箱" />
             <el-table-column prop="role" label="角色">
@@ -51,15 +44,9 @@
             </el-table-column>
         </el-table>
         <div class="pager flex-box flex-h-end">
-            <el-pagination
-                background
-                layout="total, sizes, prev, pager, next"
-                :total="total"
-                @size-change="handleSizeChange"
-                v-model:currentPage="searchForm.pageInfo.pageNo"
-                v-model:page-size="searchForm.pageInfo.pageSize"
-                @current-change="handlePageChange"
-            >
+            <el-pagination background layout="total, sizes, prev, pager, next" :total="total"
+                @size-change="handleSizeChange" v-model:currentPage="searchForm.pageInfo.pageNo"
+                v-model:page-size="searchForm.pageInfo.pageSize" @current-change="handlePageChange">
             </el-pagination>
         </div>
 
@@ -67,8 +54,7 @@
     </div>
 </template>
 
-<script lang="ts" setup>
-import { onMounted, reactive, ref } from 'vue';
+<script setup>
 import tableSearch from '@/composables/tableSearch';
 import AddAdmin from './components/AddAdmin.vue';
 import { deleteAdmin } from '@/api/setting';

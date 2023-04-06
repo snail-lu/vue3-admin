@@ -50,7 +50,17 @@ export default defineConfig({
     css: {
         postcss: {
             // css自动添加浏览器前缀
-            plugins: [require('autoprefixer')]
+            plugins: [
+                require('autoprefixer')({
+                    overrideBrowserslist: [
+                        '> 1%',
+                        'last 2 versions', // 所有主流浏览器最近2个版本
+                        'not dead',
+                        'not ie < 11'
+                    ],
+                    grid: true
+                })
+            ]
         }
     },
     build: {

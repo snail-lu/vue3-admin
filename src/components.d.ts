@@ -9,10 +9,10 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    AppHeader: typeof import('./components/layout/AppHeader.vue')['default']
-    AppMain: typeof import('./components/layout/AppMain.vue')['default']
+    AppHeader: typeof import('./components/Layout/AppHeader.vue')['default']
+    AppMain: typeof import('./components/Layout/AppMain.vue')['default']
     BarChart: typeof import('./components/Chart/BarChart.vue')['default']
-    Breadcrumb: typeof import('./components/layout/Breadcrumb.vue')['default']
+    Breadcrumb: typeof import('./components/Layout/Breadcrumb.vue')['default']
     Cascader: typeof import('./components/DynamicForm/components/Cascader.vue')['default']
     Checkbox: typeof import('./components/DynamicForm/components/Checkbox.vue')['default']
     DatePicker: typeof import('./components/DynamicForm/components/DatePicker.vue')['default']

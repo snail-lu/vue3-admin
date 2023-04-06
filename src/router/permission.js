@@ -27,7 +27,7 @@ const baseRoutes = [
     {
         path: '/login',
         name: 'login',
-        component: () => import('@/views/login/LoginView.vue'),
+        component: () => import('@/views/Login/Login.vue'),
         hidden: true
     }
 ];

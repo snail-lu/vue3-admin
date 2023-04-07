@@ -2,9 +2,9 @@
 <p align="center">
     <a href="https://snaillu.gitee.io/mall-management/" target="_blank">线上地址</a>
     ·
-    <a href="https://github.com/Snail-Lu/vue3-ts-admin" target="_blank">仓库地址</a>
+    <a href="https://github.com/Snail-Lu/vue3-admin" target="_blank">仓库地址</a>
     ·
-    <a href="https://github.com/Snail-Lu/vue3-ts-admin/issues" target="_blank">建议意见</a>
+    <a href="https://github.com/Snail-Lu/vue3-admin/issues" target="_blank">建议意见</a>
 </p>
 
 ## 简介

@@ -24,20 +24,20 @@ export const useCommonStore = defineStore(
         const changeCollapse = () => {
             isCollapsed.value = !isCollapsed.value;
         };
-        const userInfo = reactive({});
+
+        const userInfo = ref(null);
         // 保存用户信息
         const setUserInfo = (newUserInfo) => {
-            debugger;
-            Object.assign(userInfo, newUserInfo);
+            userInfo.value = newUserInfo;
         };
 
         // 是否需要动态添加用户路由
-        const needAddRoutes = ref(false);
+        const needAddRoutes = ref(true);
         // 动态添加路由
         const addRoutes = () => {
-            if (userInfo && userInfo.routes) {
+            if (userInfo && userInfo.value.routes) {
                 // 深拷贝路由数据，避免transform过程污染component属性
-                const asyncRoutes = _.cloneDeep([...userInfo.routes, ...errorRoutes]);
+                const asyncRoutes = _.cloneDeep([...userInfo.value.routes, ...errorRoutes]);
                 transformRoutes(asyncRoutes);
                 asyncRoutes.forEach((routeItem) => {
                     router.addRoute(routeItem);
@@ -56,52 +56,9 @@ export const useCommonStore = defineStore(
         return { isCollapsed, changeCollapse, userInfo, setUserInfo, needAddRoutes, addRoutes, resetNeedAddRoutes };
     },
     {
-        persist: true
+        persist: {
+            // 自定义需要持久化的数据
+            paths: ['userInfo', 'isCollapsed']
+        }
     }
 );
-
-// export const store = createStore({
-//     state() {
-//         return {
-//             userInfo: null,
-//             isCollapsed: false,
-//             addRoleRoutes: true
-//         };
-//     },
-//     mutations: {
-//         // 修改左侧导航啦折叠状态
-//         changeCollapse(state) {
-//             state.isCollapsed = !state.isCollapsed;
-//         },
-//         // 存储登录用户信息
-//         setUserInfo(state, { userInfo }) {
-//             state.userInfo = userInfo;
-//         },
-//         // 动态添加路由
-//         addRoutes(state, { roleRoutes }) {
-//             // 深拷贝路由数据，避免transform过程污染component属性
-//             const asyncRoutes = _.cloneDeep([...roleRoutes, ...errorRoutes]);
-//             transformRoutes(asyncRoutes);
-//             asyncRoutes.forEach((routeItem) => {
-//                 router.addRoute(routeItem);
-//             });
-
-//             // 将动态添加路由标志置为空，避免重复动态添加路由
-//             state.addRoleRoutes = false;
-//         },
-//         // 清空用户路由
-//         clearRoutes(state) {
-//             state.addRoleRoutes = true;
-//         }
-//     },
-//     actions: {
-//         // 动态添加路由
-//         async addRoutes(context) {
-//             let roleRoutes = context.state.userInfo.routes;
-//             if (roleRoutes.length > 0) {
-//                 context.commit('addRoutes', { roleRoutes });
-//             }
-//         }
-//     },
-//     plugins: [vuexLocal.plugin]
-// });

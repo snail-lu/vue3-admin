@@ -11,14 +11,15 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
     // 根据登录状态决定路由方向
     const store = useCommonStore();
+    // 用户信息
     const userInfo = store.userInfo;
-    // 是否需要动态添加路由
-    const addRoleRoutes = store.addRoleRoutes;
     if (userInfo) {
+        // 是否需要动态添加路由
+        const needAddRoutes = store.needAddRoutes;
         if (to.path === '/login') {
             next('/');
-        } else if (addRoleRoutes) {
-            await store.addRoleRoutes();
+        } else if (needAddRoutes) {
+            store.addRoutes();
             next({ ...to, replace: true });
         } else {
             next();

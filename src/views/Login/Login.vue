@@ -18,8 +18,9 @@
                     </el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" class="login-btn" @click="submitForm(loginFormRef)" :disabled="submiting">{{
-                        submiting ? '登录中...' : '登录' }}</el-button>
+                    <el-button type="primary" native-type="submit" class="login-btn" @click="submitForm(loginFormRef)"
+                        :disabled="submiting">{{
+                            submiting ? '登录中...' : '登录' }}</el-button>
                     <!-- <el-button class="reset-btn" @click="resetForm(loginFormRef)">重置</el-button> -->
                 </el-form-item>
             </el-form>

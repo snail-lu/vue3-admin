@@ -1,5 +1,3 @@
-import { createStore } from 'vuex';
-import VuexPersistence from 'vuex-persist';
 import { errorRoutes } from '@/router/permission';
 import router from '@/router/index';
 import { transformRoutes } from '@/utils';

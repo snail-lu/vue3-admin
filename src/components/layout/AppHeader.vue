@@ -94,7 +94,7 @@ function logout() {
 
 // 跳转github
 function goToGithub() {
-    window.open('https://github.com/Snail-Lu/vue3-ts-admin');
+    window.open('https://github.com/Snail-Lu/vue3-admin');
 }
 </script>
 

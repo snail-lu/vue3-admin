@@ -3,15 +3,6 @@ import router from '@/router/index';
 import { transformRoutes } from '@/utils';
 import _ from 'lodash';
 
-// // 需要持久化的state放这里
-// const modules = ['userInfo'];
-
-// // 创建vuex持久化实例
-// const vuexLocal = new VuexPersistence({
-//     storage: window.localStorage,
-//     modules
-// });
-
 // 创建 store 实例
 export const useCommonStore = defineStore(
     'common',

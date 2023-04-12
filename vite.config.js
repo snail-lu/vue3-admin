@@ -4,6 +4,7 @@ import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import { fileURLToPath, URL } from 'node:url';
+import autoprefixer from 'autoprefixer';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,7 +13,7 @@ export default defineConfig({
         vue(),
         AutoImport({
             // 自动导入 Vue, vue-router, pinia, 以及ElMessage, ElMessageBox等API
-            imports: ['vue', 'vue-router', 'vuex', 'pinia', { 'element-plus/es': ['ElMessage', 'ElMessageBox'] }],
+            imports: ['vue', 'vue-router', 'pinia', { 'element-plus/es': ['ElMessage', 'ElMessageBox'] }],
             dts: 'src/auto-import.d.ts',
             eslintrc: {
                 enabled: true
@@ -51,7 +52,7 @@ export default defineConfig({
         postcss: {
             // css自动添加浏览器前缀
             plugins: [
-                require('autoprefixer')({
+                autoprefixer({
                     overrideBrowserslist: [
                         '> 1%',
                         'last 2 versions', // 所有主流浏览器最近2个版本

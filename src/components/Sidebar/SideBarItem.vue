@@ -5,7 +5,7 @@
             <el-icon>
                 <component :is="menu.meta?.icon ? menu.meta.icon : ''"></component>
             </el-icon>
-            <span>{{ menu?.meta?.title }}</span>
+            <span class="menu-txt">{{ menu?.meta?.title }}</span>
         </template>
 
         <!-- 递归渲染下级菜单 -->
@@ -19,7 +19,7 @@
         <el-icon v-if="menu?.meta?.icon">
             <component :is="menu.meta?.icon ? menu.meta.icon : ''"></component>
         </el-icon>
-        <template #title>{{ menu?.meta?.title }}</template>
+        <template #title><span class="menu-txt">{{ menu?.meta?.title }}</span></template>
     </el-menu-item>
     <!-- </div> -->
 </template>
@@ -49,4 +49,8 @@ const routePath = computed(() => {
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.menu-txt {
+    user-select: none;
+}
+</style>
